@@ -58,10 +58,10 @@ public class Produto implements Serializable{
     private Fornecedor fornecedor;
     
     @ManyToOne
-    @JoinColumn(name="idTipoProduto")
+    @JoinColumn(name="idTipoProduto" )
     private TipoProduto tipoProduto;
 
-    public Integer getIdProduto() {
+    public Integer getIdProduto () {
         return idProduto;
     }
 
@@ -73,7 +73,7 @@ public class Produto implements Serializable{
         return dsProduto;
     }
 
-    public void setDsProduto(String dsProduto) {
+    public void setDsProduto(String dsProduto){
         this.dsProduto = dsProduto;
     }
 
