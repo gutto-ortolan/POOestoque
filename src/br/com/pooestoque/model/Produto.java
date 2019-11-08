@@ -73,7 +73,7 @@ public class Produto implements Serializable{
         return dsProduto;
     }
 
-    public void setDsProduto(String dsProduto) {
+    public void setDsProduto(String dsProduto){
         this.dsProduto = dsProduto;
     }
 
