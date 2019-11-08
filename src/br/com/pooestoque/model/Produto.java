@@ -61,7 +61,7 @@ public class Produto implements Serializable{
     @JoinColumn(name="idTipoProduto")
     private TipoProduto tipoProduto;
 
-    public Integer getIdProduto() {
+    public Integer getIdProduto () {
         return idProduto;
     }
 
