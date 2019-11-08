@@ -138,7 +138,7 @@ public class Produto implements Serializable{
         return marca;
     }
 
-    public void setMarca(Marca marca) {
+    public void setMarca(Marca marca){
         this.marca = marca;
     }
 
