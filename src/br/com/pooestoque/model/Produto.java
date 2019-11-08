@@ -33,6 +33,8 @@ public class Produto implements Serializable{
     
     private String cdBarras;
     
+    private Double qtd;
+    
     private Double vlPrecoCusto = 0.0;
     
     private Double vlPrecoVenda = 0.0;
@@ -170,6 +172,14 @@ public class Produto implements Serializable{
 
     public void setTipoProduto(TipoProduto tipoProduto) {
         this.tipoProduto = tipoProduto;
+    }
+
+    public Double getQtd() {
+        return qtd;
+    }
+
+    public void setQtd(Double qtd) {
+        this.qtd = qtd;
     }
 
 }
