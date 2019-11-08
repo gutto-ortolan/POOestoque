@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -23,10 +25,14 @@ public class Divisao implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQDIVISAO")
     private Integer idDivisao;
     
+    @Column(nullable = false)
     private String dsDivisao;
     
+    @Column(nullable = false, columnDefinition = "char")
     private String stDivisao;
     
+    @ManyToOne
+    @JoinColumn(name="idSubGrupo", nullable = false)
     private SubGrupo subGrupo;
 
     public Integer getIdDivisao() {
@@ -46,11 +52,26 @@ public class Divisao implements Serializable {
     }
 
     public String getStDivisao() {
+        if (stDivisao != null) {
+            if (stDivisao.equals("A")) {
+                return "ATIVO";
+            } else if (stDivisao.equals("I")) {
+                return "INATIVO";
+            }
+        }
         return stDivisao;
     }
 
     public void setStDivisao(String stDivisao) {
-        this.stDivisao = stDivisao;
+        if (stDivisao != null) {
+            if (stDivisao.equals("ATIVO")) {
+                this.stDivisao = "A";
+            } else if (stDivisao.equals("INATIVO")) {
+                this.stDivisao = "I";
+            }
+        } else {
+            this.stDivisao = stDivisao;
+        }
     }
 
     public SubGrupo getSubGrupo() {
@@ -61,4 +82,9 @@ public class Divisao implements Serializable {
         this.subGrupo = subGrupo;
     }
 
+    @Override
+    public String toString() {
+        return getDsDivisao();
+    }
+    
 }

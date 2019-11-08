@@ -1,5 +1,6 @@
 package br.com.pooestoque.model;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,14 +15,18 @@ import javax.persistence.Table;
  */
 @Entity()
 @Table(name="GRUPO")
-public class Grupo {
+public class Grupo implements Serializable{
 
     @Id
     @Column(nullable = false)
     @SequenceGenerator(name = "SEQGRUPO", sequenceName = "SEQGRUPO", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQGRUPO") 
     private Integer idGrupo;
+    
+    @Column(nullable = false)
     private String dsGrupo;
+    
+    @Column(nullable = false, columnDefinition = "char")
     private String stGrupo;
 
     public Integer getIdGrupo() {
@@ -41,11 +46,31 @@ public class Grupo {
     }
 
     public String getStGrupo() {
+        if (stGrupo != null) {
+            if (stGrupo.equals("A")) {
+                return "ATIVO";
+            } else if (stGrupo.equals("I")) {
+                return "INATIVO";
+            }
+        }
         return stGrupo;
     }
 
     public void setStGrupo(String stGrupo) {
-        this.stGrupo = stGrupo;
+        if (stGrupo != null) {
+            if (stGrupo.equals("ATIVO")) {
+                this.stGrupo = "A";
+            } else if (stGrupo.equals("INATIVO")) {
+                this.stGrupo = "I";
+            }
+        } else {
+            this.stGrupo = stGrupo;
+        }
+    }
+    
+    @Override
+    public String toString() {
+        return getDsGrupo();
     }
 
 }
