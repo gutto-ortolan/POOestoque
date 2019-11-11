@@ -18,9 +18,9 @@ import javax.persistence.Table;
 public class TipoProduto implements Serializable{
 
     @Id
-    @Column(nullable = false)
+    @Column(updatable = false)
     @SequenceGenerator(name = "SEQTIPOPRODUTO", sequenceName = "SEQTIPOPRODUTO", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQSTIPOPRODUTO")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQTIPOPRODUTO")
     private Integer idTipoProduto;
     
     @Column(nullable = false)

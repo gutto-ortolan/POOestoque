@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class Divisao implements Serializable {
 
     @Id
-    @Column(nullable = false)
+    @Column(updatable = false)
     @SequenceGenerator(name = "SEQDIVISAO", sequenceName = "SEQDIVISAO", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQDIVISAO")
     private Integer idDivisao;

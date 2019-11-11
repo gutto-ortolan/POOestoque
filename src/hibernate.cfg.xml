@@ -43,7 +43,7 @@ Contributor(s):
   <session-factory>
     <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/PooEstoque</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/POOestoque</property>
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">prcadmin</property>
     <property name="current_session_context_class">thread</property>
@@ -52,16 +52,16 @@ Contributor(s):
     <property name="show_sql">true</property>
     <property name="hbm2ddl.auto">update</property>
     
-    <mapping class="br.projeto.pooestoque.model.Marca"/>
-    <mapping class="br.projeto.pooestoque.model.Produto"/>
-    <mapping class="br.projeto.pooestoque.model.Grupo"/>
-    <mapping class="br.projeto.pooestoque.model.SubGrupo"/>
-    <mapping class="br.projeto.pooestoque.model.Divisao"/>
-    <mapping class="br.projeto.pooestoque.model.OrigemProduto"/>
-    <mapping class="br.projeto.pooestoque.model.UnidadeProduto"/>
-    <mapping class="br.projeto.pooestoque.model.TipoProduto"/>
-    <mapping class="br.projeto.pooestoque.model.Fornecedor/>
-    
+    <mapping class="br.com.pooestoque.model.Marca"/>
+    <mapping class="br.com.pooestoque.model.Fornecedor"/>
+    <mapping class="br.com.pooestoque.model.TipoProduto"/>
+    <mapping class="br.com.pooestoque.model.OrigemProduto"/>
+    <mapping class="br.com.pooestoque.model.UnidadeProduto"/>
+    <mapping class="br.com.pooestoque.model.SubGrupo"/>
+    <mapping class="br.com.pooestoque.model.Grupo"/>
+    <mapping class="br.com.pooestoque.model.Produto"/>
+    <mapping class="br.com.pooestoque.model.Divisao"/>
+
     
   </session-factory>
   

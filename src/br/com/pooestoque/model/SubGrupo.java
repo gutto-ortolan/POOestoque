@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class SubGrupo implements Serializable{
 
     @Id
-    @Column(nullable = false)
+    @Column(updatable = false)
     @SequenceGenerator(name = "SEQSUBGRUPO", sequenceName = "SEQSUBGRUPO", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQSUBGRUPO")
     private Integer idSubGrupo;

@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class UnidadeProduto implements Serializable{
 
     @Id
-    @Column(nullable = false)
+    @Column(updatable = false)
     @SequenceGenerator(name = "SEQUNIDADEPRODUTO", sequenceName = "SEQUNIDADEPRODUTO", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQUNIDADEPRODUTO")
     private Integer idUnidade;

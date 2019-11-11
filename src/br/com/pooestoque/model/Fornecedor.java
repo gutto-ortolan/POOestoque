@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class Fornecedor implements Serializable{
     
     @Id
-    @Column(nullable = false)
+    @Column(updatable = false)
     @SequenceGenerator(name = "SEQFORNECEDOR", sequenceName = "SEQFORNECEDOR", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQFORNECEDOR") 
     private Integer idFornecedor;

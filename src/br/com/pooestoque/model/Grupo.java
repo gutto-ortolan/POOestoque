@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class Grupo implements Serializable{
 
     @Id
-    @Column(nullable = false)
+    @Column(updatable = false)
     @SequenceGenerator(name = "SEQGRUPO", sequenceName = "SEQGRUPO", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQGRUPO") 
     private Integer idGrupo;

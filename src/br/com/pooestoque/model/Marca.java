@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class Marca implements Serializable{
 
     @Id
-    @Column(nullable = false)
+    @Column(updatable = false)
     @SequenceGenerator(name = "SEQMARCA", sequenceName = "SEQMARCA", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQMARCA")
     private Integer idMarca;
