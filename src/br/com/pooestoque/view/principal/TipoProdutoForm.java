@@ -1,6 +1,8 @@
-package br.com.pooestoque.view;
+package br.com.pooestoque.view.principal;
 
+import br.com.pooestoque.controller.TipoProdutoCon;
 import br.com.pooestoque.controller.ProdutoCon;
+import br.com.pooestoque.model.TipoProduto;
 import br.com.pooestoque.model.Produto;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
@@ -14,87 +16,64 @@ import javax.swing.table.TableColumnModel;
  *
  * @author augusto.ortolan
  */
-public class testeframe extends javax.swing.JInternalFrame {
+public class TipoProdutoForm extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form testeframe
-     */
     private DefaultTableModel tabelaModelo;
     private char origem;
     private Integer sizeTab = 1145;
-    
-    private static testeframe testeframe;
-    
-    public static testeframe getInstancia(){
-        if(testeframe == null){
-            testeframe = new testeframe();
+    private TipoProdutoCon tipoProdutoCon = new TipoProdutoCon();
+
+    private static TipoProdutoForm testeframe;
+
+    public static TipoProdutoForm getInstancia() {
+        if (testeframe == null) {
+            testeframe = new TipoProdutoForm();
         }
         return testeframe;
-    };
-    
-    public testeframe() {
-        initComponents();
-        //setMaximumSize(new Dimension(1146, 672));
-        setResizable(false);
-        tabela.setModel((new DefaultTableModel(null, new Object[]{"Código", "Descrição", "Quantidade", "Vl Venda", "Tamanho", "Marca", "Situação"})));
-        tamanho_colunas();
-        //visivel = true;
+    }
 
-       // readJTableForDescricao();
+    public TipoProdutoForm() {
+        initComponents();
+        setResizable(false);
+        tabela.setModel((new DefaultTableModel(null, new Object[]{"Código", "Descrição", "Situação"})));
+        tamanho_colunas();
     }
 
     public void readJTable() {
         tabelaModelo = (DefaultTableModel) tabela.getModel();
         tabelaModelo.setNumRows(0);
-        ProdutoCon produtoCon = new ProdutoCon();
 
-        for (Produto produto : produtoCon.getLista()) {
+        for (TipoProduto tipoProduto : tipoProdutoCon.getLista()) {
             tabelaModelo.addRow(new Object[]{
-                produto.getIdProduto(),
-                produto.getDsProduto(),
-                produto.getQtd(),
-                //produto.getVlVenda(),
-                //produto.getTamanhoProduto(),
-                produto.getMarca(),
-                produto.getStProduto()
+                tipoProduto.getIdTipoProduto(),
+                tipoProduto.getDsTipoProduto(),
+                tipoProduto.getStTipoProduto()
             });
         }
-
     }
 
     public void readJTableForDescricao() {
         tabelaModelo = (DefaultTableModel) tabela.getModel();
         tabelaModelo.setNumRows(0);
-        ProdutoCon produtoCon = new ProdutoCon();
 
-        for (Produto produto : produtoCon.getProdutoPorNome(txfPesquisar.getText().toUpperCase())) {
+        for (TipoProduto tipoProduto : tipoProdutoCon.getTipoProdutoPorNome(txfPesquisar.getText().toUpperCase())) {
             tabelaModelo.addRow(new Object[]{
-                produto.getIdProduto(),
-                produto.getDsProduto(),
-                produto.getQtd(),
-                //produto.getVlVenda(),
-                //produto.getTamanhoProduto(),
-                produto.getMarca(),
-                produto.getStProduto()
+                tipoProduto.getIdTipoProduto(),
+                tipoProduto.getDsTipoProduto(),
+                tipoProduto.getStTipoProduto()
             });
         }
-
     }
 
     public void readJTableForID() {
         tabelaModelo = (DefaultTableModel) tabela.getModel();
         tabelaModelo.setNumRows(0);
-        ProdutoCon produtoCon = new ProdutoCon();
 
-        for (Produto produto : produtoCon.getProdutoPorID(Integer.parseInt(txfPesquisar.getText()))) {
+        for (TipoProduto tipoProduto : tipoProdutoCon.getTipoProdutoPorID(Integer.parseInt(txfPesquisar.getText()))) {
             tabelaModelo.addRow(new Object[]{
-                produto.getIdProduto(),
-                produto.getDsProduto(),
-                produto.getQtd(),
-                //produto.getVlVenda(),
-                //produto.getTamanhoProduto(),
-                produto.getMarca(),
-                produto.getStProduto()
+                tipoProduto.getIdTipoProduto(),
+                tipoProduto.getDsTipoProduto(),
+                tipoProduto.getStTipoProduto()
             });
         }
     }
@@ -102,37 +81,14 @@ public class testeframe extends javax.swing.JInternalFrame {
     public void readJTableForSituacao() {
         tabelaModelo = (DefaultTableModel) tabela.getModel();
         tabelaModelo.setNumRows(0);
-        ProdutoCon produtoCon = new ProdutoCon();
 
-        for (Produto produto : produtoCon.getProdutoPorSituacao(txfPesquisar.getText())) {
+        for (TipoProduto tipoProduto : tipoProdutoCon.getTipoProdutoPorSituacao(txfPesquisar.getText())) {
             tabelaModelo.addRow(new Object[]{
-                produto.getIdProduto(),
-                produto.getDsProduto(),
-                produto.getQtd(),
-                //produto.getVlVenda(),
-                //produto.getTamanhoProduto(),
-                produto.getMarca(),
-                produto.getStProduto()
+                tipoProduto.getIdTipoProduto(),
+                tipoProduto.getDsTipoProduto(),
+                tipoProduto.getStTipoProduto()
             });
         }
-    }
-
-    public void readJTableForMarca() {
-        tabelaModelo = (DefaultTableModel) tabela.getModel();
-        tabelaModelo.setNumRows(0);
-        ProdutoCon produtoCon = new ProdutoCon();
-
-//        for (Produto produto : produtoCon.getProdutoPorMarca(txfPesquisar.getText())) {
-//            tabelaModelo.addRow(new Object[]{
-//                produto.getIdProduto(),
-//                produto.getDsProduto(),
-//                produto.getQtd(),
-//                //produto.getVlVenda(),
-//                //produto.getTamanhoProduto(),
-//                produto.getMarca(),
-//                produto.getStProduto()
-//            });
-//        }
     }
 
     /**
@@ -377,8 +333,6 @@ public class testeframe extends javax.swing.JInternalFrame {
         } else if (cbxPesquisar.getSelectedIndex() == 1) {
             readJTableForDescricao();
         } else if (cbxPesquisar.getSelectedIndex() == 2) {
-            readJTableForMarca();
-        } else if (cbxPesquisar.getSelectedIndex() == 3) {
             readJTableForSituacao();
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
@@ -464,7 +418,7 @@ public class testeframe extends javax.swing.JInternalFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         dispose();
-       
+
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnEsquerdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEsquerdaActionPerformed
@@ -482,7 +436,6 @@ public class testeframe extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnEsquerdaFimActionPerformed
 
-    
     private void tamanho_colunas() {
         DefaultTableCellRenderer rendererCentro = new DefaultTableCellRenderer();
         rendererCentro.setHorizontalAlignment(SwingConstants.CENTER);
@@ -502,20 +455,13 @@ public class testeframe extends javax.swing.JInternalFrame {
         modeloDaColuna.getColumn(0).setCellRenderer(rendererDireita);
         modeloDaColuna.getColumn(1).setCellRenderer(rendererEsquerda);
         modeloDaColuna.getColumn(2).setCellRenderer(rendererCentro);
-        modeloDaColuna.getColumn(3).setCellRenderer(rendererCentro);
-        modeloDaColuna.getColumn(4).setCellRenderer(rendererCentro);
-        modeloDaColuna.getColumn(5).setCellRenderer(rendererEsquerda);
-        modeloDaColuna.getColumn(6).setCellRenderer(rendererCentro);
 
-        modeloDaColuna.getColumn(0).setMaxWidth((sizeTab * 10)/100);
-        modeloDaColuna.getColumn(1).setMaxWidth((sizeTab * 30)/100);
-        modeloDaColuna.getColumn(2).setMaxWidth((sizeTab * 20)/100);
-        modeloDaColuna.getColumn(3).setMaxWidth((sizeTab * 10)/100);
-        modeloDaColuna.getColumn(4).setMaxWidth((sizeTab * 10)/100);
-        modeloDaColuna.getColumn(5).setMaxWidth((sizeTab * 10)/100);
-        modeloDaColuna.getColumn(6).setMaxWidth((sizeTab * 10)/100);
+        modeloDaColuna.getColumn(0).setMaxWidth((sizeTab * 10) / 100);
+        modeloDaColuna.getColumn(1).setMaxWidth((sizeTab * 75) / 100);
+        modeloDaColuna.getColumn(2).setMaxWidth((sizeTab * 15) / 100);
+
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntDireita;

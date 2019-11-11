@@ -142,4 +142,16 @@ public class MarcaCon {
             sessao.close();
         }
     }
+    
+    public static void main(String[] args) {
+        Marca m = new Marca();
+        
+        MarcaCon con = new MarcaCon();
+        
+        m.setIdMarca(1);
+        m.setDsMarca("dsfdsfsdf");
+        m.setStMarca("ATIVO");
+        
+        con.incluir(m);
+    }
 }
