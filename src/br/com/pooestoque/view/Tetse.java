@@ -1,5 +1,6 @@
 package br.com.pooestoque.view;
 
+import br.com.pooestoque.util.GerenteDeJanelas;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;

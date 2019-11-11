@@ -1,4 +1,4 @@
-package br.com.pooestoque.view;
+package br.com.pooestoque.util;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
