@@ -23,13 +23,13 @@ import javax.swing.JOptionPane;
  */
 public class NovoProdutoForm extends javax.swing.JDialog {
     
-    private MarcaCon marcaCon = new MarcaCon();
-    private OrigemProdutoCon origemCon = new OrigemProdutoCon();
-    private UnidadeProdutoCon unidadeCon = new UnidadeProdutoCon();
-    private GrupoCon grupoCon = new GrupoCon();
-    private SubGrupoCon subGrupoCon = new SubGrupoCon();
-    private DivisaoCon divisaoCon = new DivisaoCon();
-    private FornecedorCon fornecedorCon = new FornecedorCon();
+    private final MarcaCon marcaCon = new MarcaCon();
+    private final OrigemProdutoCon origemCon = new OrigemProdutoCon();
+    private final UnidadeProdutoCon unidadeCon = new UnidadeProdutoCon();
+    private final GrupoCon grupoCon = new GrupoCon();
+    private final SubGrupoCon subGrupoCon = new SubGrupoCon();
+    private final DivisaoCon divisaoCon = new DivisaoCon();
+    private final FornecedorCon fornecedorCon = new FornecedorCon();
     private final String origemBnt;
     
     public NovoProdutoForm(String origem) {

@@ -5,14 +5,27 @@ import br.com.pooestoque.controller.ProdutoCon;
 import br.com.pooestoque.model.Marca;
 import br.com.pooestoque.model.UnidadeProduto;
 import br.com.pooestoque.model.Produto;
+import br.com.pooestoque.relatorios.Teste;
 import br.com.pooestoque.view.adicionar.NovoGeralForm;
 import java.awt.Dimension;
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.swing.JRViewer;
 
 /**
  *
@@ -194,6 +207,11 @@ public class UnidadeProdutoForm extends javax.swing.JInternalFrame {
 
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/imprimir.png"))); // NOI18N
         btnImprimir.setText("Imprimir");
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
 
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/sair.png"))); // NOI18N
         btnSair.setText("Sair");
@@ -394,6 +412,40 @@ public class UnidadeProdutoForm extends javax.swing.JInternalFrame {
             tabela.setRowSelectionInterval(0, 0);
         }
     }//GEN-LAST:event_btnEsquerdaFimActionPerformed
+
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        try {
+            List dados = null;
+            
+            if(txfPesquisar.getText().isEmpty() || txfPesquisar.getText() == null ){
+                dados = unidadeProdutoCon.getLista();
+            }else if(cbxPesquisar.getSelectedIndex() == 1){
+                dados = unidadeProdutoCon.getUnidadeProdutoPorID(Integer.parseInt(txfPesquisar.getText()));
+            }else if(cbxPesquisar.getSelectedIndex() == 0){
+                dados = unidadeProdutoCon.getUnidadeProdutoPorNome(txfPesquisar.getText());
+            }else{
+                dados = unidadeProdutoCon.getUnidadeProdutoPorSituacao(txfPesquisar.getText());
+            }
+            
+            JRDataSource jRDataSource = new JRBeanCollectionDataSource(dados);
+            
+            JasperPrint jrPrint = JasperFillManager.fillReport(Teste.class.getResource("UnidadeProduto.jasper").openStream(), null,  jRDataSource);
+            JasperExportManager.exportReportToPdfFile(jrPrint, "teste");
+
+            JRViewer view = new JRViewer(jrPrint);
+            JDialog d = new JDialog();
+            d.add(view);
+            d.setSize(800, 600);
+            d.setLocationRelativeTo(null);
+            d.setModal(true);
+            d.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(Marca.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MarcaForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void tamanho_colunas() {
         DefaultTableCellRenderer rendererCentro = new DefaultTableCellRenderer();
