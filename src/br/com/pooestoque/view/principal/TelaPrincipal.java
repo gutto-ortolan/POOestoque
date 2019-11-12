@@ -34,8 +34,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         };
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jmProduto = new javax.swing.JMenuItem();
+        jmMarca = new javax.swing.JMenuItem();
+        jmUnidade = new javax.swing.JMenuItem();
+        jmOrigem = new javax.swing.JMenuItem();
+        jmTipo = new javax.swing.JMenuItem();
+        jmGrupo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trabalho POO Estoque");
@@ -54,21 +58,53 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/pesquisar.png"))); // NOI18N
         jMenu1.setText("Menu");
 
-        jMenuItem1.setText("Produto");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jmProduto.setText("Produto");
+        jmProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jmProdutoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(jmProduto);
 
-        jMenuItem2.setText("Marca");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jmMarca.setText("Marca");
+        jmMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jmMarcaActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(jmMarca);
+
+        jmUnidade.setText("Unidade Produto");
+        jmUnidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmUnidadeActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmUnidade);
+
+        jmOrigem.setText("Origem Produto");
+        jmOrigem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmOrigemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmOrigem);
+
+        jmTipo.setText("Tipo Produto");
+        jmTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmTipoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmTipo);
+
+        jmGrupo.setText("Grupo");
+        jmGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmGrupoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmGrupo);
 
         jMenuBar1.add(jMenu1);
 
@@ -88,13 +124,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jmProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmProdutoActionPerformed
         gerenteDeJanelas.abrirJanelas(ProdutoForm.getInstancia());
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jmProdutoActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jmMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmMarcaActionPerformed
         gerenteDeJanelas.abrirJanelas(MarcaForm.getInstancia());
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jmMarcaActionPerformed
+
+    private void jmUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmUnidadeActionPerformed
+        gerenteDeJanelas.abrirJanelas(UnidadeProdutoForm.getInstancia());
+    }//GEN-LAST:event_jmUnidadeActionPerformed
+
+    private void jmGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmGrupoActionPerformed
+        gerenteDeJanelas.abrirJanelas(GrupoForm.getInstancia());
+    }//GEN-LAST:event_jmGrupoActionPerformed
+
+    private void jmTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmTipoActionPerformed
+       gerenteDeJanelas.abrirJanelas(TipoProdutoForm.getInstancia());
+    }//GEN-LAST:event_jmTipoActionPerformed
+
+    private void jmOrigemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmOrigemActionPerformed
+        gerenteDeJanelas.abrirJanelas(OrigemProdutoForm.getInstancia());
+    }//GEN-LAST:event_jmOrigemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,7 +190,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jmGrupo;
+    private javax.swing.JMenuItem jmMarca;
+    private javax.swing.JMenuItem jmOrigem;
+    private javax.swing.JMenuItem jmProduto;
+    private javax.swing.JMenuItem jmTipo;
+    private javax.swing.JMenuItem jmUnidade;
     // End of variables declaration//GEN-END:variables
 }

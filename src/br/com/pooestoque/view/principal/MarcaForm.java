@@ -4,6 +4,7 @@ import br.com.pooestoque.controller.MarcaCon;
 import br.com.pooestoque.controller.ProdutoCon;
 import br.com.pooestoque.model.Marca;
 import br.com.pooestoque.model.Produto;
+import br.com.pooestoque.view.adicionar.NovoGeralForm;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -19,7 +20,6 @@ import javax.swing.table.TableColumnModel;
 public class MarcaForm extends javax.swing.JInternalFrame {
 
     private DefaultTableModel tabelaModelo;
-    private char origem;
     private Integer sizeTab = 1145;
     private MarcaCon marcaCon = new MarcaCon();
     
@@ -42,7 +42,7 @@ public class MarcaForm extends javax.swing.JInternalFrame {
     public void readJTable() {
         tabelaModelo = (DefaultTableModel) tabela.getModel();
         tabelaModelo.setNumRows(0);
-        
+
 
         for (Marca marca : marcaCon.getLista()) {
             tabelaModelo.addRow(new Object[]{
@@ -74,7 +74,7 @@ public class MarcaForm extends javax.swing.JInternalFrame {
 
         for (Marca marca : marcaCon.getMarcaPorID(Integer.parseInt(txfPesquisar.getText()))) {
             tabelaModelo.addRow(new Object[]{
-                marca.getIdMarca(),
+               marca.getIdMarca(),
                marca.getDsMarca(),
                marca.getStMarca()
             });
@@ -117,7 +117,7 @@ public class MarcaForm extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("Manutenção de Produto");
+        setTitle("Manutenção de Marca");
 
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/sair.png"))); // NOI18N
         btnSair.setText("Sair");
@@ -130,7 +130,7 @@ public class MarcaForm extends javax.swing.JInternalFrame {
             }
         });
 
-        cbxPesquisar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Código", "Descrição", "Marca", "Situação" }));
+        cbxPesquisar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Descrição", "Código", "Marca", "Situação" }));
 
         btnEsquerda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/oie_transparent (9).png"))); // NOI18N
         btnEsquerda.setBorderPainted(false);
@@ -332,7 +332,7 @@ public class MarcaForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEsquerdaFimActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        if (cbxPesquisar.getSelectedIndex() == 0) {
+        if (cbxPesquisar.getSelectedIndex() == 1) {
             try {
                 Integer.parseInt(txfPesquisar.getText());
                 readJTableForID();
@@ -340,7 +340,7 @@ public class MarcaForm extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "O campo 'CÓDIGO' requer um número.", "Pesquisa por CÓDIGO", JOptionPane.WARNING_MESSAGE);
                 System.out.println(erro);
             }
-        } else if (cbxPesquisar.getSelectedIndex() == 1) {
+        } else if (cbxPesquisar.getSelectedIndex() == 0) {
             readJTableForDescricao();
         } else if (cbxPesquisar.getSelectedIndex() == 2) {
             readJTableForSituacao();
@@ -365,45 +365,43 @@ public class MarcaForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnVisualizaActionPerformed
 
     private void bntNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntNovoActionPerformed
-        //        origem = 'N';
-        //        if (origem == 'N') {
-            //            NovoProdutoForm janelaNovo = new NovoProdutoForm();
-            //            janelaNovo.setModal(true);
-            //            janelaNovo.setLocationRelativeTo(null);
-            //            janelaNovo.setVisible(true);
-            //
-            //            Produto produto = janelaNovo.getNovoProduto();
-            //            if (produto != null) {
-                //                // adicionar produto na tabela;
-                //                ((DefaultTableModel) tabela.getModel()).addRow(new Object[]{
-                    //                    produto.getIdProduto(), produto.getDsProduto(), produto.getQtd(), produto.getVlVenda(), produto.getTamanhoProduto(), produto.getMarca(), produto.getStProduto()
-                    //                });
-            //            }
-        //        }
+        
+        NovoGeralForm janelaNovo = new NovoGeralForm("Marca", "Novo") {};
+        janelaNovo.setTitle("Nova Marca");
+        janelaNovo.setModal(true);
+        janelaNovo.setLocationRelativeTo(null);
+        janelaNovo.setVisible(true);
+
+        Marca marca = janelaNovo.getNovoMarca();
+        if (marca != null) {
+            // adicionar produto na tabela;
+            ((DefaultTableModel) tabela.getModel()).addRow(new Object[]{
+               marca.getIdMarca(),
+               marca.getDsMarca(),
+               marca.getStMarca()
+            });
+        }
     }//GEN-LAST:event_bntNovoActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        //        origem = 'A';
-        //        if (origem == 'A') {
-            //            if (tabela.getSelectedRow() != -1) {
-                //                ProdutoCon produtoCon = new ProdutoCon();
-                //                Produto produto = produtoCon.getProduto((Integer) tabela.getValueAt(tabela.getSelectedRow(), 0));
-                //
-                //                AlterarProdutoForm janela = new AlterarProdutoForm('a') {
-                    //                    @Override
-                    //                    void close() {
-                        //                        readJTable();
-                        //                    }
-                    //                };
-                //                janela.setModal(true);
-                //                janela.setLocationRelativeTo(null);
-                //                janela.setProdutoAlterar(produto);
-                //                janela.setVisible(true);
-                //
-                //            } else {
-                //                JOptionPane.showMessageDialog(null, "Selecione uma linha para alterar.", "Alteração de dados", JOptionPane.WARNING_MESSAGE);
-                //            }
-            //        }
+        if (tabela.getSelectedRow() != -1) {
+            Marca marca = marcaCon.getMarca((Integer) tabela.getValueAt(tabela.getSelectedRow(), 0));
+
+            NovoGeralForm janela = new NovoGeralForm("Marca", "Altera") {};
+            janela.setTitle("Alterar Marca");
+            janela.setModal(true);
+            janela.setLocationRelativeTo(null);
+            janela.setMarcaAlterar(marca);
+            janela.setVisible(true);
+            
+            if(!janela.isVisible()){
+                btnPesquisarActionPerformed(evt);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha para alterar.", "Alteração de dados", JOptionPane.WARNING_MESSAGE);
+        }
+    
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -411,9 +409,8 @@ public class MarcaForm extends javax.swing.JInternalFrame {
             Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
 
             if (JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-                ProdutoCon produtoCon = new ProdutoCon();
-                Produto obj = produtoCon.getProduto(Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(), 0).toString()));
-                produtoCon.excluir(obj);
+                Marca obj = marcaCon.getMarca(Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(), 0).toString()));
+                marcaCon.excluir(obj);
 
                 DefaultTableModel atividadeExluir = (DefaultTableModel) tabela.getModel();
                 atividadeExluir.removeRow(tabela.getSelectedRow());

@@ -1,7 +1,13 @@
 package br.com.pooestoque.view.adicionar;
 
+import br.com.pooestoque.controller.DivisaoCon;
+import br.com.pooestoque.controller.FornecedorCon;
+import br.com.pooestoque.controller.GrupoCon;
 import br.com.pooestoque.controller.MarcaCon;
+import br.com.pooestoque.controller.OrigemProdutoCon;
 import br.com.pooestoque.controller.ProdutoCon;
+import br.com.pooestoque.controller.SubGrupoCon;
+import br.com.pooestoque.controller.UnidadeProdutoCon;
 import br.com.pooestoque.model.Divisao;
 import br.com.pooestoque.model.Marca;
 import br.com.pooestoque.model.OrigemProduto;
@@ -18,9 +24,17 @@ import javax.swing.JOptionPane;
 public class NovoProdutoForm extends javax.swing.JDialog {
     
     private MarcaCon marcaCon = new MarcaCon();
-    public NovoProdutoForm() {
+    private OrigemProdutoCon origemCon = new OrigemProdutoCon();
+    private UnidadeProdutoCon unidadeCon = new UnidadeProdutoCon();
+    private GrupoCon grupoCon = new GrupoCon();
+    private SubGrupoCon subGrupoCon = new SubGrupoCon();
+    private DivisaoCon divisaoCon = new DivisaoCon();
+    private FornecedorCon fornecedorCon = new FornecedorCon();
+    private final String origemBnt;
+    
+    public NovoProdutoForm(String origem) {
         initComponents();
-        
+        origemBnt = origem;
     }
 
     @SuppressWarnings("unchecked")
@@ -95,7 +109,7 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         getContentPane().add(lblCusto, gridBagConstraints);
 
         lblVenda.setText("Preço Venda");
@@ -111,7 +125,7 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         getContentPane().add(lblCodeBa, gridBagConstraints);
 
         lblMarca.setText("Marca");
@@ -135,17 +149,12 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         getContentPane().add(lblSituacao, gridBagConstraints);
 
         txfCodigo.setEditable(false);
         txfCodigo.setColumns(5);
         txfCodigo.setEnabled(false);
-        txfCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfCodigoActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -219,11 +228,6 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         getContentPane().add(cbxMarca, gridBagConstraints);
 
         cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "TÊNIS", "CAMISETA", "CALÇÃO", "CALÇA", "MEIA" }));
-        cbxTipo.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbxTipoItemStateChanged(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 4;
@@ -276,7 +280,7 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
         getContentPane().add(jLabel1, gridBagConstraints);
 
-        cbxOrigem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxOrigem.setModel(new DefaultComboBoxModel(origemCon.getLista().toArray()));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 6;
@@ -291,7 +295,7 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
         getContentPane().add(jLabel2, gridBagConstraints);
 
-        cbxUnidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxUnidade.setModel(new DefaultComboBoxModel(unidadeCon.getLista().toArray()));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 7;
@@ -306,7 +310,7 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
         getContentPane().add(jLabel3, gridBagConstraints);
 
-        cbxFornecedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxFornecedor.setModel(new DefaultComboBoxModel(fornecedorCon.getLista().toArray()));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -314,15 +318,13 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         getContentPane().add(cbxFornecedor, gridBagConstraints);
 
-        cbxGrupo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxGrupo.setModel(new DefaultComboBoxModel(grupoCon.getLista().toArray()));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         getContentPane().add(cbxGrupo, gridBagConstraints);
-
-        cbxSubGrupo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -330,7 +332,6 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         getContentPane().add(cbxSubGrupo, gridBagConstraints);
 
-        cbxDivisao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
@@ -366,37 +367,14 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txfCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txfCodigoActionPerformed
-
     private void bntGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGravarActionPerformed
         if (txfDescricao.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Os campos obrigatórios(*) devem ser preenchidos.", "", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Produto p = new Produto();
-        
-        p.setDsProduto(txfDescricao.getText().toUpperCase());
-        p.setStProduto(cbxSituacao.getSelectedItem().toString());
-        p.setTipoProduto((TipoProduto)cbxTipo.getSelectedItem());
-        p.setQtd(Double.parseDouble(txfQtd.getText()));
-        p.setVlPrecoCusto(((Double)txfCusto.getValue()));
-        p.setVlPrecoVenda(Double.parseDouble(txfVenda.getText()));
-        p.setCdBarras(txfCodeBa.getText());
-        p.setMarca((Marca) cbxMarca.getSelectedItem());
-        p.setOrigem((OrigemProduto)cbxOrigem.getSelectedItem());
-        p.setUnidade((UnidadeProduto)cbxUnidade.getSelectedItem());
-        p.setDivisao((Divisao)cbxDivisao.getSelectedItem());
-        
-        ProdutoCon produtoCon = new ProdutoCon();
-        produtoCon.incluir(p);
-
-        this.produto = p;
-        dispose();
-        
-
+        separaPorOrigemGravar(origemBnt);
     }//GEN-LAST:event_bntGravarActionPerformed
+    
     private Produto produto;
     
     public Produto getNovoProduto() {
@@ -414,9 +392,30 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void cbxTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxTipoItemStateChanged
-    }//GEN-LAST:event_cbxTipoItemStateChanged
-
+    public void separaPorOrigemGravar(String origem){
+        Produto p = new Produto();
+        
+        p.setDsProduto(txfDescricao.getText().toUpperCase());
+        p.setStProduto(cbxSituacao.getSelectedItem().toString());
+        p.setTipoProduto((TipoProduto)cbxTipo.getSelectedItem());
+        p.setQtd(Double.parseDouble(txfQtd.getText()));
+        p.setVlPrecoCusto(((Double)txfCusto.getValue()));
+        p.setVlPrecoVenda(Double.parseDouble(txfVenda.getText()));
+        p.setCdBarras(txfCodeBa.getText());
+        p.setMarca((Marca) cbxMarca.getSelectedItem());
+        p.setOrigem((OrigemProduto)cbxOrigem.getSelectedItem());
+        p.setUnidade((UnidadeProduto)cbxUnidade.getSelectedItem());
+        p.setDivisao((Divisao)cbxDivisao.getSelectedItem());
+        
+        ProdutoCon produtoCon = new ProdutoCon();
+        if(origem.equals("Novo")){
+            produtoCon.incluir(p);
+        } else if(origem.equals("Altera")){
+            produtoCon.alterar(p);
+        }
+        this.produto = p;
+        dispose();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntGravar;

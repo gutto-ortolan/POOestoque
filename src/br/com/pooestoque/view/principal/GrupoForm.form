@@ -4,7 +4,8 @@
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
     <Property name="iconifiable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="Manuten&#xe7;&#xe3;o de Produto"/>
+    <Property name="title" type="java.lang.String" value="Manuten&#xe7;&#xe3;o de Grupo"/>
+    <Property name="toolTipText" type="java.lang.String" value=""/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -113,8 +114,8 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
-            <StringItem index="0" value="C&#xf3;digo"/>
-            <StringItem index="1" value="Descri&#xe7;&#xe3;o"/>
+            <StringItem index="0" value="Descri&#xe7;&#xe3;o"/>
+            <StringItem index="1" value="C&#xf3;digo"/>
             <StringItem index="2" value="Marca"/>
             <StringItem index="3" value="Situa&#xe7;&#xe3;o"/>
           </StringArray>

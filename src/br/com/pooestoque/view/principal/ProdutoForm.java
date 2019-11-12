@@ -17,9 +17,6 @@ import javax.swing.table.TableColumnModel;
  */
 public class ProdutoForm extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form testeframe
-     */
     private DefaultTableModel tabelaModelo;
     private char origem;
     private Integer sizeTab = 1145;
@@ -34,8 +31,6 @@ public class ProdutoForm extends javax.swing.JInternalFrame {
         return testeframe;
     }
 
-    ;
-    
     public ProdutoForm() {
         initComponents();
         setResizable(false);
@@ -57,7 +52,6 @@ public class ProdutoForm extends javax.swing.JInternalFrame {
                 produto.getStProduto()
             });
         }
-
     }
 
     public void readJTableForDescricao() {
@@ -74,7 +68,6 @@ public class ProdutoForm extends javax.swing.JInternalFrame {
                 produto.getStProduto()
             });
         }
-
     }
 
     public void readJTableForID() {
@@ -158,7 +151,7 @@ public class ProdutoForm extends javax.swing.JInternalFrame {
             }
         });
 
-        cbxPesquisar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Código", "Descrição", "Marca", "Situação" }));
+        cbxPesquisar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Descrição", "Código", "Marca", "Situação" }));
 
         btnDireitaFim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/oie_transparent (8).png"))); // NOI18N
         btnDireitaFim.setBorderPainted(false);
@@ -350,7 +343,7 @@ public class ProdutoForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnDireitaFimActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        if (cbxPesquisar.getSelectedIndex() == 0) {
+        if (cbxPesquisar.getSelectedIndex() == 1) {
             try {
                 Integer.parseInt(txfPesquisar.getText());
                 readJTableForID();
@@ -358,7 +351,7 @@ public class ProdutoForm extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "O campo 'CÓDIGO' requer um número.", "Pesquisa por CÓDIGO", JOptionPane.WARNING_MESSAGE);
                 System.out.println(erro);
             }
-        } else if (cbxPesquisar.getSelectedIndex() == 1) {
+        } else if (cbxPesquisar.getSelectedIndex() == 0) {
             readJTableForDescricao();
         } else if (cbxPesquisar.getSelectedIndex() == 2) {
             readJTableForMarca();
@@ -385,49 +378,44 @@ public class ProdutoForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnVisualizaActionPerformed
 
     private void bntNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntNovoActionPerformed
-        origem = 'N';
-        if (origem == 'N') {
-            NovoProdutoForm janelaNovo = new NovoProdutoForm();
-            janelaNovo.setModal(true);
-            janelaNovo.setLocationRelativeTo(null);
-            janelaNovo.setVisible(true);
+        NovoProdutoForm janelaNovo = new NovoProdutoForm("Novo");
+        janelaNovo.setTitle("Novo Produto");
+        janelaNovo.setModal(true);
+        janelaNovo.setLocationRelativeTo(null);
+        janelaNovo.setVisible(true);
 
-            Produto produto = janelaNovo.getNovoProduto();
-            if (produto != null) {
-                ((DefaultTableModel) tabela.getModel()).addRow(new Object[]{
-                    produto.getIdProduto(),
-                    produto.getDsProduto(),
-                    produto.getQtd(),
-                    produto.getVlPrecoVenda(),
-                    produto.getMarca(),
-                    produto.getStProduto()
-                });
-            }
+        Produto produto = janelaNovo.getNovoProduto();
+        if (produto != null) {
+            ((DefaultTableModel) tabela.getModel()).addRow(new Object[]{
+                produto.getIdProduto(),
+                produto.getDsProduto(),
+                produto.getQtd(),
+                produto.getVlPrecoVenda(),
+                produto.getMarca(),
+                produto.getStProduto()
+            });
         }
     }//GEN-LAST:event_bntNovoActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-//        origem = 'A';
-//        if (origem == 'A') {
-//            if (tabela.getSelectedRow() != -1) {
-//                ProdutoCon produtoCon = new ProdutoCon();
-//                Produto produto = produtoCon.getProduto((Integer) tabela.getValueAt(tabela.getSelectedRow(), 0));
-//
-//                AlterarProdutoForm janela = new AlterarProdutoForm('a') {
-//                    @Override
-//                    void close() {
-//                        readJTable();
-//                    }
-//                };
-//                janela.setModal(true);
-//                janela.setLocationRelativeTo(null);
-//                janela.setProdutoAlterar(produto);
-//                janela.setVisible(true);
-//
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Selecione uma linha para alterar.", "Alteração de dados", JOptionPane.WARNING_MESSAGE);
-//            }
-//        }
+        if (tabela.getSelectedRow() != -1) {
+            ProdutoCon produtoCon = new ProdutoCon();
+            Produto produto = produtoCon.getProduto((Integer) tabela.getValueAt(tabela.getSelectedRow(), 0));
+
+            NovoProdutoForm janela = new NovoProdutoForm("Novo");
+            janela.setTitle("Alterar Produto");
+            janela.setModal(true);
+            janela.setLocationRelativeTo(null);
+            janela.setProdutoAlterar(produto);
+            janela.setVisible(true);
+
+            if(!janela.isVisible()){
+                btnPesquisarActionPerformed(evt);
+            }
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha para alterar.", "Alteração de dados", JOptionPane.WARNING_MESSAGE);
+        }
 
     }//GEN-LAST:event_btnAlterarActionPerformed
 
