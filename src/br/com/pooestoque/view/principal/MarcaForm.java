@@ -107,7 +107,6 @@ public class MarcaForm extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         btnPesquisar = new javax.swing.JButton();
-        btnVisualiza = new javax.swing.JButton();
         bntNovo = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
@@ -183,17 +182,6 @@ public class MarcaForm extends javax.swing.JInternalFrame {
             }
         });
 
-        btnVisualiza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/ajuda.png"))); // NOI18N
-        btnVisualiza.setText("Visualizar");
-        btnVisualiza.setMaximumSize(new java.awt.Dimension(95, 27));
-        btnVisualiza.setMinimumSize(new java.awt.Dimension(95, 27));
-        btnVisualiza.setPreferredSize(new java.awt.Dimension(95, 27));
-        btnVisualiza.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVisualizaActionPerformed(evt);
-            }
-        });
-
         bntNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/novo.png"))); // NOI18N
         bntNovo.setText("Novo");
         bntNovo.setMaximumSize(new java.awt.Dimension(95, 27));
@@ -253,9 +241,7 @@ public class MarcaForm extends javax.swing.JInternalFrame {
                         .addComponent(btnDireitaFim)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bntDireita)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnVisualiza, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(133, 133, 133)
                         .addComponent(bntNovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -292,11 +278,10 @@ public class MarcaForm extends javax.swing.JInternalFrame {
                         .addComponent(bntDireita)
                         .addComponent(btnDireitaFim)
                         .addComponent(btnEsquerdaFim))
-                    .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
                     .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnImprimir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bntNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnVisualiza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -346,23 +331,6 @@ public class MarcaForm extends javax.swing.JInternalFrame {
             readJTableForSituacao();
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
-
-    private void btnVisualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizaActionPerformed
-        //        if (tabela.getSelectedRow() != -1) {
-            //            ProdutoCon produtoCon = new ProdutoCon();
-            //            Produto produto = produtoCon.getProduto((Integer) tabela.getValueAt(tabela.getSelectedRow(), 0));
-            //
-            //            VisualizaProdutoForm janela = new VisualizaProdutoForm();
-            //
-            //            janela.setModal(true);
-            //            janela.setLocationRelativeTo(null);
-            //            janela.setProdutoAlterar(produto);
-            //            janela.setVisible(true);
-            //
-            //        } else {
-            //            JOptionPane.showMessageDialog(null, "Selecione uma linha para alterar.", "Alteração de dados", JOptionPane.WARNING_MESSAGE);
-            //        }
-    }//GEN-LAST:event_btnVisualizaActionPerformed
 
     private void bntNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntNovoActionPerformed
         
@@ -467,7 +435,6 @@ public class MarcaForm extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSair;
-    private javax.swing.JButton btnVisualiza;
     private javax.swing.JComboBox<String> cbxPesquisar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabela;

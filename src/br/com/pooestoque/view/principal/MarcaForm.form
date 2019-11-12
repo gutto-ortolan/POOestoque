@@ -34,9 +34,7 @@
                       <Component id="btnDireitaFim" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="bntDireita" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnVisualiza" min="-2" pref="105" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
                       <Component id="bntNovo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnAlterar" min="-2" max="-2" attributes="0"/>
@@ -80,11 +78,10 @@
                       <Component id="btnDireitaFim" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnEsquerdaFim" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="btnAlterar" alignment="0" pref="35" max="32767" attributes="0"/>
+                  <Component id="btnAlterar" alignment="0" pref="39" max="32767" attributes="0"/>
                   <Component id="btnExcluir" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnImprimir" alignment="1" max="32767" attributes="0"/>
                   <Component id="bntNovo" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnVisualiza" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnSair" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -194,26 +191,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnVisualiza">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/br/com/pooestoque/imagens/ajuda.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Visualizar"/>
-        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[95, 27]"/>
-        </Property>
-        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[95, 27]"/>
-        </Property>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[95, 27]"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bntNovo">
