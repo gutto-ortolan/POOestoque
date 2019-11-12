@@ -396,12 +396,12 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         Produto p = new Produto();
         
         p.setDsProduto(txfDescricao.getText().toUpperCase());
-        p.setStProduto(cbxSituacao.getSelectedItem().toString());
+        p.setStProduto(cbxSituacao.getSelectedItem().toString().toUpperCase());
         p.setTipoProduto((TipoProduto)cbxTipo.getSelectedItem());
         p.setQtd(Double.parseDouble(txfQtd.getText()));
         p.setVlPrecoCusto(((Double)txfCusto.getValue()));
         p.setVlPrecoVenda(Double.parseDouble(txfVenda.getText()));
-        p.setCdBarras(txfCodeBa.getText());
+        p.setCdBarras(txfCodeBa.getText().toUpperCase());
         p.setMarca((Marca) cbxMarca.getSelectedItem());
         p.setOrigem((OrigemProduto)cbxOrigem.getSelectedItem());
         p.setUnidade((UnidadeProduto)cbxUnidade.getSelectedItem());

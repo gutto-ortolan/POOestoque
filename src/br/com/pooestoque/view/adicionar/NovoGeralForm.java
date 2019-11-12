@@ -64,55 +64,58 @@ public class NovoGeralForm extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 0);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(95, 50, 0, 0);
         getContentPane().add(lblCodigo, gridBagConstraints);
 
         txfCodigo.setEditable(false);
         txfCodigo.setColumns(5);
         txfCodigo.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 40;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 80;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(92, 5, 0, 0);
         getContentPane().add(txfCodigo, gridBagConstraints);
 
         lblSituacao.setText("Situação*");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(95, 122, 0, 0);
         getContentPane().add(lblSituacao, gridBagConstraints);
 
         cbxSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATIVO", "INATIVO" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(92, 5, 0, 0);
         getContentPane().add(cbxSituacao, gridBagConstraints);
 
         lblDescricao.setText("Descrição*");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(8, 50, 0, 0);
         getContentPane().add(lblDescricao, gridBagConstraints);
 
         txfDescricao.setColumns(15);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 160;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 365;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 46);
         getContentPane().add(txfDescricao, gridBagConstraints);
 
         bntGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/oie_transparent (14).png"))); // NOI18N
@@ -126,12 +129,12 @@ public class NovoGeralForm extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(31, 0, 0, 0);
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.ipadx = 11;
+        gridBagConstraints.ipady = 13;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(33, 47, 90, 0);
         getContentPane().add(bntGravar, gridBagConstraints);
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/oie_transparent (13).png"))); // NOI18N
@@ -144,13 +147,13 @@ public class NovoGeralForm extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 6;
-        gridBagConstraints.ipady = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(31, 0, 0, 0);
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 12;
+        gridBagConstraints.ipady = 13;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(33, 10, 90, 0);
         getContentPane().add(btnCancelar, gridBagConstraints);
 
         pack();
@@ -183,8 +186,8 @@ public class NovoGeralForm extends javax.swing.JDialog {
     public void separaPorOrigemGravar(String origem, String origemBtn) {
         if (origem.equals("Unidade")) {
             UnidadeProduto u = new UnidadeProduto();
-            u.setDsUnidade(txfDescricao.getText());
-            u.setStUnidade(cbxSituacao.getSelectedItem().toString());
+            u.setDsUnidade(txfDescricao.getText().toUpperCase());
+            u.setStUnidade(cbxSituacao.getSelectedItem().toString().toUpperCase());
             if(origemBtn.equals("Novo")){
                unidadeProdutoCon.incluir(u); 
             }else if(origemBtn.equals("Altera")){
@@ -195,8 +198,8 @@ public class NovoGeralForm extends javax.swing.JDialog {
             this.unidadeProduto = u;
         } else if (origem.equals("Tipo")) {
             TipoProduto t = new TipoProduto();
-            t.setDsTipoProduto(txfDescricao.getText());
-            t.setStTipoProduto(cbxSituacao.getSelectedItem().toString());
+            t.setDsTipoProduto(txfDescricao.getText().toUpperCase());
+            t.setStTipoProduto(cbxSituacao.getSelectedItem().toString().toUpperCase());
             if(origemBtn.equals("Novo")){
                tipoProdutoCon.incluir(t); 
             }else if(origemBtn.equals("Altera")){
@@ -206,8 +209,8 @@ public class NovoGeralForm extends javax.swing.JDialog {
             this.tipoProduto = t;
         } else if (origem.equals("Grupo")) {
             Grupo g = new Grupo();
-            g.setDsGrupo(txfDescricao.getText());
-            g.setStGrupo(cbxSituacao.getSelectedItem().toString());
+            g.setDsGrupo(txfDescricao.getText().toUpperCase());
+            g.setStGrupo(cbxSituacao.getSelectedItem().toString().toUpperCase());
             if(origemBtn.equals("Novo")){
                grupoCon.incluir(g); 
             }else if(origemBtn.equals("Altera")){
@@ -217,8 +220,8 @@ public class NovoGeralForm extends javax.swing.JDialog {
             this.grupo = g;
         } else if (origem.equals("Origem")) {
             OrigemProduto o = new OrigemProduto();
-            o.setDsOrigem(txfDescricao.getText());
-            o.setStOrigem(cbxSituacao.getSelectedItem().toString());
+            o.setDsOrigem(txfDescricao.getText().toUpperCase());
+            o.setStOrigem(cbxSituacao.getSelectedItem().toString().toUpperCase());
             if(origemBtn.equals("Novo")){
                origemProdutoCon.incluir(o); 
             }else if(origemBtn.equals("Altera")){
@@ -228,8 +231,8 @@ public class NovoGeralForm extends javax.swing.JDialog {
             this.origemProduto = o;
         } else if (origem.equals("Marca")) {
             Marca m = new Marca();
-            m.setDsMarca(txfDescricao.getText());
-            m.setStMarca(cbxSituacao.getSelectedItem().toString());
+            m.setDsMarca(txfDescricao.getText().toUpperCase());
+            m.setStMarca(cbxSituacao.getSelectedItem().toString().toUpperCase());
             if(origemBtn.equals("Novo")){
                marcaCon.incluir(m); 
             }else if(origemBtn.equals("Altera")){
