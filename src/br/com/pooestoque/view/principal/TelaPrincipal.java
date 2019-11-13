@@ -40,6 +40,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmOrigem = new javax.swing.JMenuItem();
         jmTipo = new javax.swing.JMenuItem();
         jmGrupo = new javax.swing.JMenuItem();
+        jmFornecedor = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trabalho POO Estoque");
@@ -106,6 +107,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jmGrupo);
 
+        jmFornecedor.setText("Fornecedor");
+        jmFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmFornecedorActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmFornecedor);
+
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -147,6 +156,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jmOrigemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmOrigemActionPerformed
         gerenteDeJanelas.abrirJanelas(OrigemProdutoForm.getInstancia());
     }//GEN-LAST:event_jmOrigemActionPerformed
+
+    private void jmFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmFornecedorActionPerformed
+        gerenteDeJanelas.abrirJanelas(FornecedorForm.getInstancia());
+    }//GEN-LAST:event_jmFornecedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,6 +203,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jmFornecedor;
     private javax.swing.JMenuItem jmGrupo;
     private javax.swing.JMenuItem jmMarca;
     private javax.swing.JMenuItem jmOrigem;

@@ -76,7 +76,7 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 350));
+        setPreferredSize(new java.awt.Dimension(850, 350));
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
