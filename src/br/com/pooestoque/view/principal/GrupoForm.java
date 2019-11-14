@@ -138,7 +138,7 @@ public class GrupoForm extends javax.swing.JInternalFrame {
             }
         });
 
-        cbxPesquisar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Descrição", "Código", "Marca", "Situação" }));
+        cbxPesquisar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Descrição", "Código", "Situação" }));
 
         btnDireitaFim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/oie_transparent (8).png"))); // NOI18N
         btnDireitaFim.setBorderPainted(false);

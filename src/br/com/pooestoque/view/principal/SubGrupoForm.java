@@ -126,7 +126,7 @@ public class SubGrupoForm extends javax.swing.JInternalFrame {
             }
         });
 
-        cbxPesquisar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Código", "Descrição", "Marca", "Situação" }));
+        cbxPesquisar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Descrição", "Código", "Situação" }));
 
         btnDireitaFim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/oie_transparent (8).png"))); // NOI18N
         btnDireitaFim.setBorderPainted(false);
@@ -305,7 +305,7 @@ public class SubGrupoForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnDireitaFimActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        if (cbxPesquisar.getSelectedIndex() == 0) {
+        if (cbxPesquisar.getSelectedIndex() == 1) {
             try {
                 Integer.parseInt(txfPesquisar.getText());
                 readJTableForID();
@@ -313,7 +313,7 @@ public class SubGrupoForm extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "O campo 'CÓDIGO' requer um número.", "Pesquisa por CÓDIGO", JOptionPane.WARNING_MESSAGE);
                 System.out.println(erro);
             }
-        } else if (cbxPesquisar.getSelectedIndex() == 1) {
+        } else if (cbxPesquisar.getSelectedIndex() == 0) {
             readJTableForDescricao();
         } else if (cbxPesquisar.getSelectedIndex() == 2) {
             readJTableForSituacao();
