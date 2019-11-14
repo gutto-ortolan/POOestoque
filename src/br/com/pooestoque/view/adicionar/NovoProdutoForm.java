@@ -18,6 +18,7 @@ import br.com.pooestoque.model.Produto;
 import br.com.pooestoque.model.SubGrupo;
 import br.com.pooestoque.model.TipoProduto;
 import br.com.pooestoque.model.UnidadeProduto;
+import java.awt.Toolkit;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -47,6 +48,11 @@ public class NovoProdutoForm extends javax.swing.JDialog {
     public NovoProdutoForm(String origem) {
         initComponents();
         origemBnt = origem;
+        setIcon();
+    }
+    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
     }
 
     @SuppressWarnings("unchecked")

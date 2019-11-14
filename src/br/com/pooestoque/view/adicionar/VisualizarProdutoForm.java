@@ -1,6 +1,7 @@
 package br.com.pooestoque.view.adicionar;
 
 import br.com.pooestoque.model.Produto;
+import java.awt.Toolkit;
 
 /**
  *
@@ -10,6 +11,11 @@ public class VisualizarProdutoForm extends javax.swing.JDialog {
 
     public VisualizarProdutoForm() {
         initComponents();
+        setIcon();
+    }
+    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
     }
     
     

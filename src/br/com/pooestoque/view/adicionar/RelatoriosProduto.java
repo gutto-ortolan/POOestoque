@@ -5,6 +5,7 @@ import br.com.pooestoque.model.Marca;
 import br.com.pooestoque.relatorios.Teste;
 import br.com.pooestoque.view.principal.MarcaForm;
 import br.com.pooestoque.view.principal.ProdutoForm;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -29,6 +30,11 @@ public class RelatoriosProduto extends javax.swing.JDialog {
     private ProdutoForm form = new ProdutoForm();
     public RelatoriosProduto() {
         initComponents();
+        setIcon();
+    }
+    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
     }
 
     @SuppressWarnings("unchecked")

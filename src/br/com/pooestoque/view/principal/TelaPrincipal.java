@@ -3,6 +3,7 @@ package br.com.pooestoque.view.principal;
 import br.com.pooestoque.util.GerenteDeJanelas;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -18,6 +19,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.gerenteDeJanelas = new GerenteDeJanelas(jDesktopPane1);
+    }
+    
+    ImageIcon imagemTituloJanela = new ImageIcon("icon.png");
+    
+    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
     }
 
     @SuppressWarnings("unchecked")
@@ -153,6 +161,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trabalho POO Estoque");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setIconImage(imagemTituloJanela.getImage());
 
         jDesktopPane1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {

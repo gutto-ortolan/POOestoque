@@ -2,6 +2,7 @@ package br.com.pooestoque.view.adicionar;
 
 import br.com.pooestoque.controller.FornecedorCon;
 import br.com.pooestoque.model.Fornecedor;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +18,11 @@ public class NovoFornecedorForm extends javax.swing.JDialog {
     public NovoFornecedorForm(String origemb) {
         initComponents();
         origemBtn = origemb;
+        setIcon();
+    }
+    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
     }
     
     @SuppressWarnings("unchecked")

@@ -6,6 +6,7 @@ import br.com.pooestoque.controller.SubGrupoCon;
 import br.com.pooestoque.model.Divisao;
 import br.com.pooestoque.model.Grupo;
 import br.com.pooestoque.model.SubGrupo;
+import java.awt.Toolkit;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -25,7 +26,8 @@ public class NovoSubGrupoDivisaoForm extends javax.swing.JDialog {
 
     public NovoSubGrupoDivisaoForm(String origemClasse, String origemb) {
         initComponents();
-
+        
+        setIcon();
         origemCla = origemClasse;
         origemBtn = origemb;
 
@@ -36,6 +38,10 @@ public class NovoSubGrupoDivisaoForm extends javax.swing.JDialog {
             lblDiv.setText("SubGrupo");
             cbxSubDiv.setModel(new DefaultComboBoxModel(subGrupoCon.getLista().toArray()));
         }
+    }
+    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
     }
 
     @SuppressWarnings("unchecked")

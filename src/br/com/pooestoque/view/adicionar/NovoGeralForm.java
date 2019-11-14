@@ -10,6 +10,7 @@ import br.com.pooestoque.model.Marca;
 import br.com.pooestoque.model.OrigemProduto;
 import br.com.pooestoque.model.TipoProduto;
 import br.com.pooestoque.model.UnidadeProduto;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,11 +36,17 @@ public class NovoGeralForm extends javax.swing.JDialog {
         initComponents();
         origemClasse = origem;
         origemBtn = origemb;
+        setIcon();
+    }
+    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
     }
     
     public NovoGeralForm(String origem){
         initComponents();
         origemClasse = origem;
+        setIcon();
     }
     
     @SuppressWarnings("unchecked")
