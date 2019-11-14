@@ -7,6 +7,7 @@ import br.com.pooestoque.controller.MarcaCon;
 import br.com.pooestoque.controller.OrigemProdutoCon;
 import br.com.pooestoque.controller.ProdutoCon;
 import br.com.pooestoque.controller.SubGrupoCon;
+import br.com.pooestoque.controller.TipoProdutoCon;
 import br.com.pooestoque.controller.UnidadeProdutoCon;
 import br.com.pooestoque.model.Divisao;
 import br.com.pooestoque.model.Marca;
@@ -26,6 +27,7 @@ public class NovoProdutoForm extends javax.swing.JDialog {
     private final MarcaCon marcaCon = new MarcaCon();
     private final OrigemProdutoCon origemCon = new OrigemProdutoCon();
     private final UnidadeProdutoCon unidadeCon = new UnidadeProdutoCon();
+    private final TipoProdutoCon tipoProdutoCon = new TipoProdutoCon();
     private final GrupoCon grupoCon = new GrupoCon();
     private final SubGrupoCon subGrupoCon = new SubGrupoCon();
     private final DivisaoCon divisaoCon = new DivisaoCon();
@@ -227,7 +229,7 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         getContentPane().add(cbxMarca, gridBagConstraints);
 
-        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "TÊNIS", "CAMISETA", "CALÇÃO", "CALÇA", "MEIA" }));
+        cbxTipo.setModel(new DefaultComboBoxModel(tipoProdutoCon.getLista().toArray()));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 4;

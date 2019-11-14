@@ -40,6 +40,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmOrigem = new javax.swing.JMenuItem();
         jmTipo = new javax.swing.JMenuItem();
         jmGrupo = new javax.swing.JMenuItem();
+        jmSubGrupo = new javax.swing.JMenuItem();
+        jmDivisao = new javax.swing.JMenuItem();
         jmFornecedor = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -107,6 +109,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jmGrupo);
 
+        jmSubGrupo.setText("SubGrupo");
+        jmSubGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmSubGrupoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmSubGrupo);
+
+        jmDivisao.setText("Divisão");
+        jmDivisao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmDivisaoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmDivisao);
+
         jmFornecedor.setText("Fornecedor");
         jmFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,6 +179,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gerenteDeJanelas.abrirJanelas(FornecedorForm.getInstancia());
     }//GEN-LAST:event_jmFornecedorActionPerformed
 
+    private void jmSubGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSubGrupoActionPerformed
+        gerenteDeJanelas.abrirJanelas(SubGrupoForm.getInstancia());
+    }//GEN-LAST:event_jmSubGrupoActionPerformed
+
+    private void jmDivisaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmDivisaoActionPerformed
+        gerenteDeJanelas.abrirJanelas(DivisaoForm.getInstancia());
+    }//GEN-LAST:event_jmDivisaoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -203,11 +229,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jmDivisao;
     private javax.swing.JMenuItem jmFornecedor;
     private javax.swing.JMenuItem jmGrupo;
     private javax.swing.JMenuItem jmMarca;
     private javax.swing.JMenuItem jmOrigem;
     private javax.swing.JMenuItem jmProduto;
+    private javax.swing.JMenuItem jmSubGrupo;
     private javax.swing.JMenuItem jmTipo;
     private javax.swing.JMenuItem jmUnidade;
     // End of variables declaration//GEN-END:variables

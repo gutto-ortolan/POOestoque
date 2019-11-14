@@ -1,9 +1,13 @@
 package br.com.pooestoque.view.adicionar;
 
+import br.com.pooestoque.controller.DivisaoCon;
 import br.com.pooestoque.controller.FornecedorCon;
 import br.com.pooestoque.controller.GrupoCon;
 import br.com.pooestoque.controller.SubGrupoCon;
+import br.com.pooestoque.model.Divisao;
 import br.com.pooestoque.model.Fornecedor;
+import br.com.pooestoque.model.Grupo;
+import br.com.pooestoque.model.SubGrupo;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -13,28 +17,29 @@ import javax.swing.JOptionPane;
  */
 public class NovoSubGrupoDivisaoForm extends javax.swing.JDialog {
 
-    private final FornecedorCon fornecedorCon = new FornecedorCon();
     private final String origemBtn;
     private final String origemCla;
-    private Fornecedor fornecedor = new Fornecedor();
+    private SubGrupo subGrupo = new SubGrupo();
+    private Divisao divisao = new Divisao();
     private final GrupoCon grupoCon = new GrupoCon();
     private final SubGrupoCon subGrupoCon = new SubGrupoCon();
-    
+    private final DivisaoCon divisaoCon = new DivisaoCon();
+
     public NovoSubGrupoDivisaoForm(String origemb, String origemClasse) {
         initComponents();
-        
+
         origemCla = origemClasse;
         origemBtn = origemb;
-        
-        if (origemClasse.equals("Sub")){
+
+        if (origemClasse.equals("Sub")) {
             lblDiv.setText("Grupo");
             cbxSubDiv.setModel(new DefaultComboBoxModel(grupoCon.getLista().toArray()));
-        }else if(origemClasse.equals("Div")){
+        } else if (origemClasse.equals("Div")) {
             lblDiv.setText("SubGrupo");
             cbxSubDiv.setModel(new DefaultComboBoxModel(subGrupoCon.getLista().toArray()));
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -160,15 +165,19 @@ public class NovoSubGrupoDivisaoForm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGravarActionPerformed
-        if(txfNome.getText().equals("")){
+        if (txfNome.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Os campos obrigatórios(*) devem ser preenchidos.", "", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        separaPorOrigemGravar(origemBtn);
+        separaPorOrigemGravar(origemBtn, origemCla);
     }//GEN-LAST:event_bntGravarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.fornecedor = null;
+        if(origemCla.equals("Sub")){
+            this.subGrupo = null;
+        }else{
+            this.divisao = null;
+        }
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
@@ -186,35 +195,56 @@ public class NovoSubGrupoDivisaoForm extends javax.swing.JDialog {
     private javax.swing.JTextField txfNome;
     // End of variables declaration//GEN-END:variables
 
-    public void separaPorOrigemGravar(String origemBtn) {
-            Fornecedor f = new Fornecedor();
-            f.setNmFornecedor(txfNome.getText().toUpperCase());
-            f.setStFornecedor(cbxSituacao.getSelectedItem().toString().toUpperCase());
-            f.setDiasVisita(Integer.parseInt(txfDiasVisita.getText()));
-            f.setCnpj(txfCnpj.getText());
-            if(origemBtn.equals("Novo")){
-               fornecedorCon.incluir(f); 
-            }else if(origemBtn.equals("Altera")){
-                f.setIdFornecedor(Integer.parseInt(txfCodigo.getText()));
-                fornecedorCon.alterar(f);
+    public void separaPorOrigemGravar(String origemBtn, String origemClass) {
+        if (origemClass.equals("Sub")) {
+            SubGrupo s = new SubGrupo();
+            s.setDsSubGrupo(txfNome.getText().toUpperCase());
+            s.setStSubGrupo(cbxSituacao.getSelectedItem().toString().toUpperCase());
+            s.setGrupo((Grupo)cbxSubDiv.getSelectedItem());
+            if (origemBtn.equals("Novo")) {
+                subGrupoCon.incluir(s);
+            } else if (origemBtn.equals("Altera")) {
+                s.setIdSubGrupo(Integer.parseInt(txfCodigo.getText()));
+                subGrupoCon.alterar(s);
             }
-            this.fornecedor = f;
+            this.subGrupo = s;
+        }else if(origemClass.equals("Div")){
+            Divisao d = new Divisao();
+            d.setDsDivisao(txfNome.getText().toUpperCase());
+            d.setStDivisao(cbxSituacao.getSelectedItem().toString().toUpperCase());
+            d.setSubGrupo((SubGrupo)cbxSubDiv.getSelectedItem());
+            if (origemBtn.equals("Novo")) {
+                divisaoCon.incluir(d);
+            } else if (origemBtn.equals("Altera")) {
+                d.setIdDivisao(Integer.parseInt(txfCodigo.getText()));
+                divisaoCon.alterar(d);
+            }
+            this.divisao = d;
+        }
+
         dispose();
     }
 
-    
-    public Fornecedor getNovoFornecedor() {
-        return fornecedor;
+    public SubGrupo getNovoSubGrupo() {
+        return subGrupo;
     }
-    
-    
-    public void setFornecedorAlterar(Fornecedor obj) {
-        txfCodigo.setText(String.valueOf(obj.getIdFornecedor()));
-        txfNome.setText(obj.getNmFornecedor());
-        cbxSituacao.setSelectedItem(obj.getStFornecedor());
-        txfDiasVisita.setText(obj.getDiasVisita().toString());
-        txfCnpj.setText(obj.getCnpj());
+
+    public Divisao getNovoDivisao() {
+        return divisao;
     }
-    
-    
+
+    public void setSubGrupoAlterar(SubGrupo obj) {
+        txfCodigo.setText(String.valueOf(obj.getIdSubGrupo()));
+        txfNome.setText(obj.getDsSubGrupo());
+        cbxSituacao.setSelectedItem(obj.getStSubGrupo());
+        cbxSubDiv.setSelectedItem(obj.getGrupo());
+    }
+
+    public void setDivisaoAlterar(Divisao obj) {
+        txfCodigo.setText(String.valueOf(obj.getIdDivisao()));
+        txfNome.setText(obj.getDsDivisao());
+        cbxSituacao.setSelectedItem(obj.getStDivisao());
+        cbxSubDiv.setSelectedItem(obj.getSubGrupo());
+    }
+
 }

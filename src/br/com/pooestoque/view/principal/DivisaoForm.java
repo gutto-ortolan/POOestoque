@@ -4,6 +4,8 @@ import br.com.pooestoque.controller.ProdutoCon;
 import br.com.pooestoque.controller.DivisaoCon;
 import br.com.pooestoque.model.Produto;
 import br.com.pooestoque.model.Divisao;
+import br.com.pooestoque.model.SubGrupo;
+import br.com.pooestoque.view.adicionar.NovoSubGrupoDivisaoForm;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -111,7 +113,6 @@ public class DivisaoForm extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         btnPesquisar = new javax.swing.JButton();
-        btnVisualiza = new javax.swing.JButton();
         bntNovo = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
@@ -165,17 +166,6 @@ public class DivisaoForm extends javax.swing.JInternalFrame {
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
-            }
-        });
-
-        btnVisualiza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/novo.png"))); // NOI18N
-        btnVisualiza.setText("Visualizar");
-        btnVisualiza.setMaximumSize(new java.awt.Dimension(95, 27));
-        btnVisualiza.setMinimumSize(new java.awt.Dimension(95, 27));
-        btnVisualiza.setPreferredSize(new java.awt.Dimension(95, 27));
-        btnVisualiza.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVisualizaActionPerformed(evt);
             }
         });
 
@@ -258,9 +248,7 @@ public class DivisaoForm extends javax.swing.JInternalFrame {
                         .addComponent(btnDireitaFim)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bntDireita)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnVisualiza, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(133, 133, 133)
                         .addComponent(bntNovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -298,11 +286,10 @@ public class DivisaoForm extends javax.swing.JInternalFrame {
                         .addComponent(bntDireita)
                         .addComponent(btnDireitaFim)
                         .addComponent(btnEsquerdaFim))
-                    .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnImprimir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bntNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnVisualiza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -341,65 +328,46 @@ public class DivisaoForm extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
-    private void btnVisualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizaActionPerformed
-//        if (tabela.getSelectedRow() != -1) {
-//            ProdutoCon produtoCon = new ProdutoCon();
-//            Produto produto = produtoCon.getProduto((Integer) tabela.getValueAt(tabela.getSelectedRow(), 0));
-//
-//            VisualizaProdutoForm janela = new VisualizaProdutoForm();
-//
-//            janela.setModal(true);
-//            janela.setLocationRelativeTo(null);
-//            janela.setProdutoAlterar(produto);
-//            janela.setVisible(true);
-//
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Selecione uma linha para alterar.", "Alteração de dados", JOptionPane.WARNING_MESSAGE);
-//        }
-    }//GEN-LAST:event_btnVisualizaActionPerformed
-
     private void bntNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntNovoActionPerformed
-//        origem = 'N';
-//        if (origem == 'N') {
-//            NovoProdutoForm janelaNovo = new NovoProdutoForm();
-//            janelaNovo.setModal(true);
-//            janelaNovo.setLocationRelativeTo(null);
-//            janelaNovo.setVisible(true);
-//
-//            Produto produto = janelaNovo.getNovoProduto();
-//            if (produto != null) {
-//                // adicionar produto na tabela;
-//                ((DefaultTableModel) tabela.getModel()).addRow(new Object[]{
-//                    produto.getIdProduto(), produto.getDsProduto(), produto.getQtd(), produto.getVlVenda(), produto.getTamanhoProduto(), produto.getMarca(), produto.getStProduto()
-//                });
-//            }
-//        }
+        NovoSubGrupoDivisaoForm janelaNovo = new NovoSubGrupoDivisaoForm("Div", "Novo") {
+        };
+        janelaNovo.setTitle("Nova Divisão");
+        janelaNovo.setModal(true);
+        janelaNovo.setLocationRelativeTo(null);
+        janelaNovo.setVisible(true);
+
+        Divisao divisao = janelaNovo.getNovoDivisao();
+        if (divisao != null) {
+            // adicionar produto na tabela;
+            ((DefaultTableModel) tabela.getModel()).addRow(new Object[]{
+                divisao.getIdDivisao(),
+                divisao.getDsDivisao(),
+                divisao.getSubGrupo().getDsSubGrupo(),
+                divisao.getStDivisao()
+            });
+        }
 
     }//GEN-LAST:event_bntNovoActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-//        origem = 'A';
-//        if (origem == 'A') {
-//            if (tabela.getSelectedRow() != -1) {
-//                ProdutoCon produtoCon = new ProdutoCon();
-//                Produto produto = produtoCon.getProduto((Integer) tabela.getValueAt(tabela.getSelectedRow(), 0));
-//
-//                AlterarProdutoForm janela = new AlterarProdutoForm('a') {
-//                    @Override
-//                    void close() {
-//                        readJTable();
-//                    }
-//                };
-//                janela.setModal(true);
-//                janela.setLocationRelativeTo(null);
-//                janela.setProdutoAlterar(produto);
-//                janela.setVisible(true);
-//
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Selecione uma linha para alterar.", "Alteração de dados", JOptionPane.WARNING_MESSAGE);
-//            }
-//        }
+        if (tabela.getSelectedRow() != -1) {
+            Divisao divisao = divisaoCon.getDivisao((Integer) tabela.getValueAt(tabela.getSelectedRow(), 0));
 
+            NovoSubGrupoDivisaoForm janela = new NovoSubGrupoDivisaoForm("Div", "Altera") {
+            };
+            janela.setTitle("Alterar Divisão");
+            janela.setModal(true);
+            janela.setLocationRelativeTo(null);
+            janela.setDivisaoAlterar(divisao);
+            janela.setVisible(true);
+
+            if (!janela.isVisible()) {
+                btnPesquisarActionPerformed(evt);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha para alterar.", "Alteração de dados", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -407,9 +375,8 @@ public class DivisaoForm extends javax.swing.JInternalFrame {
             Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
 
             if (JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-                ProdutoCon produtoCon = new ProdutoCon();
-                Produto obj = produtoCon.getProduto(Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(), 0).toString()));
-                produtoCon.excluir(obj);
+                Divisao obj = divisaoCon.getDivisao(Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(), 0).toString()));
+                divisaoCon.excluir(obj);
 
                 DefaultTableModel atividadeExluir = (DefaultTableModel) tabela.getModel();
                 atividadeExluir.removeRow(tabela.getSelectedRow());
@@ -480,7 +447,6 @@ public class DivisaoForm extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSair;
-    private javax.swing.JButton btnVisualiza;
     private javax.swing.JComboBox<String> cbxPesquisar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabela;
