@@ -122,7 +122,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{idProduto}]]></textFieldExpression>
 			</textField>
-			<textField pattern="" isBlankWhenNull="false">
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
 				<reportElement key="textField" mode="Opaque" x="52" y="0" width="398" height="15" forecolor="#000000" backcolor="#FFFFFF" uuid="97dbbbe7-467e-41b3-96f6-e6ba23bb03f2"/>
 				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
