@@ -1,10 +1,8 @@
 package br.com.pooestoque.view.principal;
 
 import br.com.pooestoque.controller.UnidadeProdutoCon;
-import br.com.pooestoque.controller.ProdutoCon;
 import br.com.pooestoque.model.Marca;
 import br.com.pooestoque.model.UnidadeProduto;
-import br.com.pooestoque.model.Produto;
 import br.com.pooestoque.relatorios.Teste;
 import br.com.pooestoque.view.adicionar.NovoGeralForm;
 import java.awt.Dimension;

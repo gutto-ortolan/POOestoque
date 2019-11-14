@@ -10,6 +10,7 @@ import br.com.pooestoque.controller.SubGrupoCon;
 import br.com.pooestoque.controller.TipoProdutoCon;
 import br.com.pooestoque.controller.UnidadeProdutoCon;
 import br.com.pooestoque.model.Divisao;
+import br.com.pooestoque.model.Fornecedor;
 import br.com.pooestoque.model.Grupo;
 import br.com.pooestoque.model.Marca;
 import br.com.pooestoque.model.OrigemProduto;
@@ -457,6 +458,7 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         p.setOrigem((OrigemProduto)cbxOrigem.getSelectedItem());
         p.setUnidade((UnidadeProduto)cbxUnidade.getSelectedItem());
         p.setDivisao((Divisao)cbxDivisao.getSelectedItem());
+        p.setFornecedor((Fornecedor)cbxFornecedor.getSelectedItem());
         
         ProdutoCon produtoCon = new ProdutoCon();
         if(origem.equals("Novo")){
