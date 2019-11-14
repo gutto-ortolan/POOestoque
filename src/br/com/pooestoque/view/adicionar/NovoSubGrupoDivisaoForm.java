@@ -25,7 +25,7 @@ public class NovoSubGrupoDivisaoForm extends javax.swing.JDialog {
     private final SubGrupoCon subGrupoCon = new SubGrupoCon();
     private final DivisaoCon divisaoCon = new DivisaoCon();
 
-    public NovoSubGrupoDivisaoForm(String origemb, String origemClasse) {
+    public NovoSubGrupoDivisaoForm(String origemClasse, String origemb) {
         initComponents();
 
         origemCla = origemClasse;

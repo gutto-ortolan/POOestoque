@@ -123,7 +123,7 @@ public class DivisaoForm extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("Manutenção de Produto");
+        setTitle("Manutenção de Divisão");
 
         bntDireita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/oie_transparent (7).png"))); // NOI18N
         bntDireita.setBorderPainted(false);
@@ -425,13 +425,13 @@ public class DivisaoForm extends javax.swing.JInternalFrame {
 
         modeloDaColuna.getColumn(0).setCellRenderer(rendererDireita);
         modeloDaColuna.getColumn(1).setCellRenderer(rendererEsquerda);
-        modeloDaColuna.getColumn(1).setCellRenderer(rendererEsquerda);
-        modeloDaColuna.getColumn(2).setCellRenderer(rendererCentro);
+        modeloDaColuna.getColumn(2).setCellRenderer(rendererEsquerda);
+        modeloDaColuna.getColumn(3).setCellRenderer(rendererCentro);
 
         modeloDaColuna.getColumn(0).setMaxWidth((sizeTab * 15) / 100);
         modeloDaColuna.getColumn(1).setMaxWidth((sizeTab * 35) / 100);
-        modeloDaColuna.getColumn(1).setMaxWidth((sizeTab * 35) / 100);
-        modeloDaColuna.getColumn(2).setMaxWidth((sizeTab * 15) / 100);
+        modeloDaColuna.getColumn(2).setMaxWidth((sizeTab * 35) / 100);
+        modeloDaColuna.getColumn(3).setMaxWidth((sizeTab * 15) / 100);
 
     }
 

@@ -15,6 +15,13 @@ import br.com.pooestoque.model.OrigemProduto;
 import br.com.pooestoque.model.Produto;
 import br.com.pooestoque.model.TipoProduto;
 import br.com.pooestoque.model.UnidadeProduto;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -321,6 +328,11 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         getContentPane().add(cbxFornecedor, gridBagConstraints);
 
         cbxGrupo.setModel(new DefaultComboBoxModel(grupoCon.getLista().toArray()));
+        cbxGrupo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cbxGrupoPropertyChange(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
@@ -393,6 +405,27 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         this.produto = null;
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void cbxGrupoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cbxGrupoPropertyChange
+//        List<String> strList = new ArrayList<String>();
+//
+//        String query = "SELECT * FROM TABELA WHERE CONDICAO = TAL";
+//
+//        PreparedStatement ps = con.prepareStatement(query);
+//        ResultSet rs = ps.executeQuery();
+//
+//        while (rs.next) {
+//
+//            strList.add(rs.getString("NOME_DA_COLUNA_TAL_LÁ_DO_BANCO"));
+//
+//        }
+//
+//        try {
+//            ps.close();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(NovoProdutoForm.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }//GEN-LAST:event_cbxGrupoPropertyChange
 
     public void separaPorOrigemGravar(String origem){
         Produto p = new Produto();
