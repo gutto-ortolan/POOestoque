@@ -1,11 +1,9 @@
 package br.com.pooestoque.view.adicionar;
 
 import br.com.pooestoque.controller.DivisaoCon;
-import br.com.pooestoque.controller.FornecedorCon;
 import br.com.pooestoque.controller.GrupoCon;
 import br.com.pooestoque.controller.SubGrupoCon;
 import br.com.pooestoque.model.Divisao;
-import br.com.pooestoque.model.Fornecedor;
 import br.com.pooestoque.model.Grupo;
 import br.com.pooestoque.model.SubGrupo;
 import javax.swing.DefaultComboBoxModel;

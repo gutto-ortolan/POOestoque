@@ -99,6 +99,21 @@ public class SubGrupoCon {
         }
     }
     
+    public List<SubGrupo> populaComSub(Integer idGrupo){
+        
+        Session sessao = HibernateUtil.getSession();
+        sessao.beginTransaction();
+        
+        try{
+            return sessao.createQuery("from SubGrupo where grupo = "+idGrupo+" order by idSubGrupo").list();
+        }catch (Exception e){
+            mensagem = TrataException.trataException(e);
+            return null;
+        }finally{
+            sessao.close();
+        }
+    }
+    
     public List<SubGrupo> getSubGrupoPorNome(String nome){
         
         String par = nome.toUpperCase();

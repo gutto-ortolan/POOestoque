@@ -102,22 +102,6 @@ public class ProdutoForm extends javax.swing.JInternalFrame {
         }
     }
 
-    public void readJTableForMarca() {
-        tabelaModelo = (DefaultTableModel) tabela.getModel();
-        tabelaModelo.setNumRows(0);
-
-//        for (Produto produto : produtoCon.getProdutoPorMarca(txfPesquisar.getText())) {
-//            tabelaModelo.addRow(new Object[]{
-//                produto.getIdProduto(),
-//                produto.getDsProduto(),
-//                produto.getQtd(),
-//                produto.getVlPrecoVenda(),
-//                produto.getMarca(),
-//                produto.getStProduto()
-//            });
-//        }
-    }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -151,7 +135,7 @@ public class ProdutoForm extends javax.swing.JInternalFrame {
             }
         });
 
-        cbxPesquisar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Descrição", "Código", "Marca", "Situação" }));
+        cbxPesquisar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Descrição", "Código", "Situação" }));
 
         btnDireitaFim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/oie_transparent (8).png"))); // NOI18N
         btnDireitaFim.setBorderPainted(false);
@@ -354,8 +338,6 @@ public class ProdutoForm extends javax.swing.JInternalFrame {
         } else if (cbxPesquisar.getSelectedIndex() == 0) {
             readJTableForDescricao();
         } else if (cbxPesquisar.getSelectedIndex() == 2) {
-            readJTableForMarca();
-        } else if (cbxPesquisar.getSelectedIndex() == 3) {
             readJTableForSituacao();
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
@@ -402,7 +384,7 @@ public class ProdutoForm extends javax.swing.JInternalFrame {
             ProdutoCon produtoCon = new ProdutoCon();
             Produto produto = produtoCon.getProduto((Integer) tabela.getValueAt(tabela.getSelectedRow(), 0));
 
-            NovoProdutoForm janela = new NovoProdutoForm("Novo");
+            NovoProdutoForm janela = new NovoProdutoForm("Altera");
             janela.setTitle("Alterar Produto");
             janela.setModal(true);
             janela.setLocationRelativeTo(null);
@@ -477,8 +459,8 @@ public class ProdutoForm extends javax.swing.JInternalFrame {
         modeloDaColuna.getColumn(1).setCellRenderer(rendererEsquerda);
         modeloDaColuna.getColumn(2).setCellRenderer(rendererCentro);
         modeloDaColuna.getColumn(3).setCellRenderer(rendererCentro);
-        modeloDaColuna.getColumn(4).setCellRenderer(rendererCentro);
-        modeloDaColuna.getColumn(5).setCellRenderer(rendererEsquerda);
+        modeloDaColuna.getColumn(4).setCellRenderer(rendererEsquerda);
+        modeloDaColuna.getColumn(5).setCellRenderer(rendererCentro);
 
         modeloDaColuna.getColumn(0).setMaxWidth((sizeTab * 10) / 100);
         modeloDaColuna.getColumn(1).setMaxWidth((sizeTab * 40) / 100);

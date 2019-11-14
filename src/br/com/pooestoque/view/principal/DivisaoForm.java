@@ -1,10 +1,7 @@
 package br.com.pooestoque.view.principal;
 
-import br.com.pooestoque.controller.ProdutoCon;
 import br.com.pooestoque.controller.DivisaoCon;
-import br.com.pooestoque.model.Produto;
 import br.com.pooestoque.model.Divisao;
-import br.com.pooestoque.model.SubGrupo;
 import br.com.pooestoque.view.adicionar.NovoSubGrupoDivisaoForm;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;

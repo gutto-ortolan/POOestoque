@@ -99,6 +99,21 @@ public class DivisaoCon {
         }
     }
     
+    public List<Divisao> populaComDiv(Integer idSubGrupo){
+        
+        Session sessao = HibernateUtil.getSession();
+        sessao.beginTransaction();
+        
+        try{
+            return sessao.createQuery("from Divisao where subGrupo = "+idSubGrupo+" order by idDivisao").list();
+        }catch (Exception e){
+            mensagem = TrataException.trataException(e);
+            return null;
+        }finally{
+            sessao.close();
+        }
+    }
+    
     public List<Divisao> getDivisaoPorNome(String nome){
         
         String par = nome.toUpperCase();

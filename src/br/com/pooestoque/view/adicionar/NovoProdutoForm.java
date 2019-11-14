@@ -10,9 +10,11 @@ import br.com.pooestoque.controller.SubGrupoCon;
 import br.com.pooestoque.controller.TipoProdutoCon;
 import br.com.pooestoque.controller.UnidadeProdutoCon;
 import br.com.pooestoque.model.Divisao;
+import br.com.pooestoque.model.Grupo;
 import br.com.pooestoque.model.Marca;
 import br.com.pooestoque.model.OrigemProduto;
 import br.com.pooestoque.model.Produto;
+import br.com.pooestoque.model.SubGrupo;
 import br.com.pooestoque.model.TipoProduto;
 import br.com.pooestoque.model.UnidadeProduto;
 import java.sql.PreparedStatement;
@@ -328,9 +330,9 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         getContentPane().add(cbxFornecedor, gridBagConstraints);
 
         cbxGrupo.setModel(new DefaultComboBoxModel(grupoCon.getLista().toArray()));
-        cbxGrupo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                cbxGrupoPropertyChange(evt);
+        cbxGrupo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxGrupoItemStateChanged(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -339,6 +341,12 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         getContentPane().add(cbxGrupo, gridBagConstraints);
+
+        cbxSubGrupo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxSubGrupoItemStateChanged(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -398,7 +406,19 @@ public class NovoProdutoForm extends javax.swing.JDialog {
     public void setProdutoAlterar(Produto produto) {
         txfCodigo.setText(String.valueOf(produto.getIdProduto()));
         txfDescricao.setText(produto.getDsProduto());
-        
+        txfCodeBa.setText(produto.getCdBarras());
+        txfCusto.setText(String.valueOf(produto.getVlPrecoCusto()));
+        txfVenda.setText(String.valueOf(produto.getVlPrecoVenda()));
+        txfQtd.setText(String.valueOf(produto.getQtd()));
+        cbxDivisao.setSelectedItem(produto.getDivisao());
+        cbxFornecedor.setSelectedItem(produto.getFornecedor());
+        cbxGrupo.setSelectedItem(produto.getDivisao().getSubGrupo().getGrupo());
+        cbxMarca.setSelectedItem(produto.getMarca());
+        cbxOrigem.setSelectedItem(produto.getOrigem());
+        cbxSituacao.setSelectedItem(produto.getStProduto());
+        cbxSubGrupo.setSelectedItem(produto.getDivisao().getSubGrupo());
+        cbxTipo.setSelectedItem(produto.getTipoProduto());
+        cbxUnidade.setSelectedItem(produto.getUnidade());
     }
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -406,26 +426,22 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void cbxGrupoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cbxGrupoPropertyChange
-//        List<String> strList = new ArrayList<String>();
-//
-//        String query = "SELECT * FROM TABELA WHERE CONDICAO = TAL";
-//
-//        PreparedStatement ps = con.prepareStatement(query);
-//        ResultSet rs = ps.executeQuery();
-//
-//        while (rs.next) {
-//
-//            strList.add(rs.getString("NOME_DA_COLUNA_TAL_LÁ_DO_BANCO"));
-//
-//        }
-//
-//        try {
-//            ps.close();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(NovoProdutoForm.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }//GEN-LAST:event_cbxGrupoPropertyChange
+    private void cbxGrupoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxGrupoItemStateChanged
+        List<SubGrupo> list = new ArrayList();
+        
+        list = subGrupoCon.populaComSub(((Grupo)cbxGrupo.getSelectedItem()).getIdGrupo());
+        
+        cbxSubGrupo.setModel(new DefaultComboBoxModel(list.toArray()));
+        
+    }//GEN-LAST:event_cbxGrupoItemStateChanged
+
+    private void cbxSubGrupoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxSubGrupoItemStateChanged
+        List<Divisao> list = new ArrayList();
+        
+        list = divisaoCon.populaComDiv(((SubGrupo)cbxSubGrupo.getSelectedItem()).getIdSubGrupo());
+        
+        cbxDivisao.setModel(new DefaultComboBoxModel(list.toArray()));
+    }//GEN-LAST:event_cbxSubGrupoItemStateChanged
 
     public void separaPorOrigemGravar(String origem){
         Produto p = new Produto();
@@ -434,7 +450,7 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         p.setStProduto(cbxSituacao.getSelectedItem().toString().toUpperCase());
         p.setTipoProduto((TipoProduto)cbxTipo.getSelectedItem());
         p.setQtd(Double.parseDouble(txfQtd.getText()));
-        p.setVlPrecoCusto(((Double)txfCusto.getValue()));
+        p.setVlPrecoCusto(Double.parseDouble(txfCusto.getText()));
         p.setVlPrecoVenda(Double.parseDouble(txfVenda.getText()));
         p.setCdBarras(txfCodeBa.getText().toUpperCase());
         p.setMarca((Marca) cbxMarca.getSelectedItem());
