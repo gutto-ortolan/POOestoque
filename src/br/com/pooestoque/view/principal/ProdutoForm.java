@@ -1,18 +1,12 @@
 package br.com.pooestoque.view.principal;
 
 import br.com.pooestoque.controller.ProdutoCon;
-import br.com.pooestoque.model.Marca;
 import br.com.pooestoque.model.Produto;
-import br.com.pooestoque.relatorios.Teste;
 import br.com.pooestoque.view.adicionar.NovoProdutoForm;
 import br.com.pooestoque.view.adicionar.RelatoriosProduto;
+import br.com.pooestoque.view.adicionar.VisualizarProdutoForm;
 import java.awt.Dimension;
-import java.io.IOException;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -20,13 +14,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
-import net.sf.jasperreports.engine.JRDataSource;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.swing.JRViewer;
 
 /**
  *
@@ -365,20 +352,20 @@ public class ProdutoForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnVisualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizaActionPerformed
-//        if (tabela.getSelectedRow() != -1) {
-//            ProdutoCon produtoCon = new ProdutoCon();
-//            Produto produto = produtoCon.getProduto((Integer) tabela.getValueAt(tabela.getSelectedRow(), 0));
-//
-//            VisualizaProdutoForm janela = new VisualizaProdutoForm();
-//
-//            janela.setModal(true);
-//            janela.setLocationRelativeTo(null);
-//            janela.setProdutoAlterar(produto);
-//            janela.setVisible(true);
-//
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Selecione uma linha para alterar.", "Alteração de dados", JOptionPane.WARNING_MESSAGE);
-//        }
+        if (tabela.getSelectedRow() != -1) {
+            ProdutoCon produtoCon = new ProdutoCon();
+            Produto produto = produtoCon.getProduto((Integer) tabela.getValueAt(tabela.getSelectedRow(), 0));
+
+            VisualizarProdutoForm janela = new VisualizarProdutoForm();
+
+            janela.setModal(true);
+            janela.setLocationRelativeTo(null);
+            janela.visualizaProduto(produto);
+            janela.setVisible(true);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha para visualizar.", "Visualização de dados", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnVisualizaActionPerformed
 
     private void bntNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntNovoActionPerformed

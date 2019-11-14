@@ -55,10 +55,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 769, Short.MAX_VALUE)
+            .addGap(0, 770, Short.MAX_VALUE)
         );
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/pesquisar.png"))); // NOI18N
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/window_enter (2).png"))); // NOI18N
         jMenu1.setText("Menu");
 
         jmProduto.setText("Produto");
@@ -159,10 +159,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gerenteDeJanelas.abrirJanelas(MarcaForm.getInstancia());
     }//GEN-LAST:event_jmMarcaActionPerformed
 
-    private void jmUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmUnidadeActionPerformed
-        gerenteDeJanelas.abrirJanelas(UnidadeProdutoForm.getInstancia());
-    }//GEN-LAST:event_jmUnidadeActionPerformed
-
     private void jmGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmGrupoActionPerformed
         gerenteDeJanelas.abrirJanelas(GrupoForm.getInstancia());
     }//GEN-LAST:event_jmGrupoActionPerformed
@@ -186,6 +182,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jmDivisaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmDivisaoActionPerformed
         gerenteDeJanelas.abrirJanelas(DivisaoForm.getInstancia());
     }//GEN-LAST:event_jmDivisaoActionPerformed
+
+    private void jmUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmUnidadeActionPerformed
+        gerenteDeJanelas.abrirJanelas(UnidadeProdutoForm.getInstancia());
+    }//GEN-LAST:event_jmUnidadeActionPerformed
 
     /**
      * @param args the command line arguments
