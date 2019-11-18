@@ -66,6 +66,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmSubGrupo = new javax.swing.JMenuItem();
         jmDivisao = new javax.swing.JMenuItem();
         jmFornecedor = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jmAzul = new javax.swing.JMenuItem();
+        jmVermelho = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jmMinimizar = new javax.swing.JMenuItem();
+        jmFechar = new javax.swing.JMenuItem();
 
         jMenu2.setText("Exibir");
 
@@ -260,6 +268,45 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/iconfinder_Configuration-2-01_1976057.png"))); // NOI18N
+        jMenu3.setText("Configurações");
+
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/alterar.png"))); // NOI18N
+        jMenu4.setText("Editar");
+
+        jMenu5.setText("Cor");
+
+        jmAzul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/box_blue.png"))); // NOI18N
+        jmAzul.setText("Azul");
+        jMenu5.add(jmAzul);
+
+        jmVermelho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/box_red.png"))); // NOI18N
+        jmVermelho.setText("Vermelho");
+        jMenu5.add(jmVermelho);
+
+        jMenu4.add(jMenu5);
+
+        jMenu3.add(jMenu4);
+        jMenu3.add(jSeparator2);
+
+        jmMinimizar.setText("Minimizar");
+        jmMinimizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmMinimizarActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmMinimizar);
+
+        jmFechar.setText("Fechar");
+        jmFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmFecharActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmFechar);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -362,6 +409,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         gerenteDeJanelas.abrirJanelas(DivisaoForm.getInstancia());
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
+    private void jmMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmMinimizarActionPerformed
+        setExtendedState(ICONIFIED+MAXIMIZED_BOTH);
+    }//GEN-LAST:event_jmMinimizarActionPerformed
+
+    private void jmFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmFecharActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jmFecharActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -404,6 +459,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -418,14 +476,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JMenuItem jmAzul;
     private javax.swing.JMenuItem jmDivisao;
+    private javax.swing.JMenuItem jmFechar;
     private javax.swing.JMenuItem jmFornecedor;
     private javax.swing.JMenuItem jmGrupo;
     private javax.swing.JMenuItem jmMarca;
+    private javax.swing.JMenuItem jmMinimizar;
     private javax.swing.JMenuItem jmOrigem;
     private javax.swing.JMenuItem jmProduto;
     private javax.swing.JMenuItem jmSubGrupo;
     private javax.swing.JMenuItem jmTipo;
     private javax.swing.JMenuItem jmUnidade;
+    private javax.swing.JMenuItem jmVermelho;
     // End of variables declaration//GEN-END:variables
 }

@@ -441,7 +441,7 @@ public class SubGrupoForm extends javax.swing.JInternalFrame {
             JRViewer view = new JRViewer(jrPrint);
             JDialog d = new JDialog();
             d.add(view);
-            d.setSize(800, 600);
+            d.setSize(1000, 700);
             d.setLocationRelativeTo(null);
             d.setModal(true);
             d.setVisible(true);
