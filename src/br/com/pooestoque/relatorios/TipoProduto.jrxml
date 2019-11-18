@@ -43,9 +43,9 @@
 		<band splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="86" splitType="Stretch">
+		<band height="121" splitType="Stretch">
 			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement key="textField" mode="Opaque" x="0" y="59" width="535" height="21" forecolor="#000000" backcolor="#FFFFFF" uuid="4f0e38f9-4bc5-4fa9-8165-bc439b18f8b2"/>
+				<reportElement key="textField" mode="Opaque" x="0" y="91" width="535" height="21" forecolor="#000000" backcolor="#FFFFFF" uuid="4f0e38f9-4bc5-4fa9-8165-bc439b18f8b2"/>
 				<box topPadding="5" leftPadding="5" bottomPadding="5" rightPadding="5">
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -56,8 +56,29 @@
 					<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="CP1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{Complemento}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Relatório Tipo Produto"]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="464" y="48" width="65" height="20" uuid="a42651f8-5e86-46c3-8e44-3b7a0ab4da32"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Passo Fundo]]></text>
+			</staticText>
+			<image>
+				<reportElement x="10" y="10" width="105" height="72" uuid="f7a23be8-59c7-4ad5-bb0a-75150f7a76f2"/>
+				<imageExpression><![CDATA["C:\\Users\\augusto.ortolan\\Downloads\\oie_transparent_Easy-Resize.com.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="386" y="14" width="143" height="19" uuid="2285327a-3c23-45a7-8b3e-e9c9e9858d9f"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[System Stock LTDA.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="68" width="85" height="20" uuid="acbf484b-c677-497c-b652-aa1efb3ee308"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Rio Grande do Sul]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
