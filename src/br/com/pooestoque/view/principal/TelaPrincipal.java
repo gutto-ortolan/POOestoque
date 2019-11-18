@@ -47,7 +47,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
-        ImageIcon icon = new ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/fundob.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/fundo1.jpg"));
         Image image = icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
 
