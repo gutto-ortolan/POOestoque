@@ -19,6 +19,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.gerenteDeJanelas = new GerenteDeJanelas(jDesktopPane1);
+        setIcon();
     }
     
     ImageIcon imagemTituloJanela = new ImageIcon("icon.png");
@@ -163,6 +164,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setTitle("Trabalho POO Estoque");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImage(imagemTituloJanela.getImage());
+        setIconImages(getIconImages());
 
         jDesktopPane1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {

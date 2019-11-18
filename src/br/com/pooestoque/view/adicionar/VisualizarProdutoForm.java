@@ -70,6 +70,7 @@ public class VisualizarProdutoForm extends javax.swing.JDialog {
         txfBarras = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Vizualização de Produto");
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setText("Código");
