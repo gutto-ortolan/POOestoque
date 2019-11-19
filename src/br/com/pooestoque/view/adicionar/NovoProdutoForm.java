@@ -470,6 +470,7 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         if(origem.equals("Novo")){
             produtoCon.incluir(p);
         } else if(origem.equals("Altera")){
+            p.setIdProduto(Integer.parseInt(txfCodigo.getText()));
             produtoCon.alterar(p);
         }
         this.produto = p;
