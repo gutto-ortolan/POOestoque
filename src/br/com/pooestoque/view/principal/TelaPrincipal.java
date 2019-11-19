@@ -1,6 +1,7 @@
 package br.com.pooestoque.view.principal;
 
 import br.com.pooestoque.util.GerenteDeJanelas;
+import br.com.pooestoque.view.adicionar.SuporteDialog;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -66,11 +67,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmSubGrupo = new javax.swing.JMenuItem();
         jmDivisao = new javax.swing.JMenuItem();
         jmFornecedor = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        jmEstoque = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jmAzul = new javax.swing.JMenuItem();
         jmVermelho = new javax.swing.JMenuItem();
+        jmSuporte = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jmMinimizar = new javax.swing.JMenuItem();
         jmFechar = new javax.swing.JMenuItem();
@@ -268,8 +270,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/iconfinder_Configuration-2-01_1976057.png"))); // NOI18N
-        jMenu3.setText("Configurações");
+        jmEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/iconfinder_Configuration-2-01_1976057.png"))); // NOI18N
+        jmEstoque.setText("Configurações");
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/alterar.png"))); // NOI18N
         jMenu4.setText("Editar");
@@ -278,16 +280,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jmAzul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/box_blue.png"))); // NOI18N
         jmAzul.setText("Azul");
+        jmAzul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmAzulActionPerformed(evt);
+            }
+        });
         jMenu5.add(jmAzul);
 
         jmVermelho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/box_red.png"))); // NOI18N
         jmVermelho.setText("Vermelho");
+        jmVermelho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmVermelhoActionPerformed(evt);
+            }
+        });
         jMenu5.add(jmVermelho);
 
         jMenu4.add(jMenu5);
 
-        jMenu3.add(jMenu4);
-        jMenu3.add(jSeparator2);
+        jmEstoque.add(jMenu4);
+
+        jmSuporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/pooestoque/imagens/telefone.png"))); // NOI18N
+        jmSuporte.setText("Suporte");
+        jmSuporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmSuporteActionPerformed(evt);
+            }
+        });
+        jmEstoque.add(jmSuporte);
+        jmEstoque.add(jSeparator2);
 
         jmMinimizar.setText("Minimizar");
         jmMinimizar.addActionListener(new java.awt.event.ActionListener() {
@@ -295,7 +316,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jmMinimizarActionPerformed(evt);
             }
         });
-        jMenu3.add(jmMinimizar);
+        jmEstoque.add(jmMinimizar);
 
         jmFechar.setText("Fechar");
         jmFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -303,9 +324,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jmFecharActionPerformed(evt);
             }
         });
-        jMenu3.add(jmFechar);
+        jmEstoque.add(jmFechar);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jmEstoque);
 
         setJMenuBar(jMenuBar1);
 
@@ -417,6 +438,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jmFecharActionPerformed
 
+    private void jmAzulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAzulActionPerformed
+        
+    }//GEN-LAST:event_jmAzulActionPerformed
+
+    private void jmVermelhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmVermelhoActionPerformed
+
+    }//GEN-LAST:event_jmVermelhoActionPerformed
+
+    private void jmSuporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSuporteActionPerformed
+        SuporteDialog suporte = new SuporteDialog();
+        suporte.setTitle("Suporte ao Cliente");
+        suporte.setModal(true);
+        suporte.setLocationRelativeTo(null);
+        suporte.setVisible(true);
+    }//GEN-LAST:event_jmSuporteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -459,7 +496,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
@@ -479,6 +515,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenuItem jmAzul;
     private javax.swing.JMenuItem jmDivisao;
+    private javax.swing.JMenu jmEstoque;
     private javax.swing.JMenuItem jmFechar;
     private javax.swing.JMenuItem jmFornecedor;
     private javax.swing.JMenuItem jmGrupo;
@@ -487,6 +524,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmOrigem;
     private javax.swing.JMenuItem jmProduto;
     private javax.swing.JMenuItem jmSubGrupo;
+    private javax.swing.JMenuItem jmSuporte;
     private javax.swing.JMenuItem jmTipo;
     private javax.swing.JMenuItem jmUnidade;
     private javax.swing.JMenuItem jmVermelho;
