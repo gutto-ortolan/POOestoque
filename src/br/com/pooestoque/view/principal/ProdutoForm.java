@@ -6,6 +6,7 @@ import br.com.pooestoque.view.adicionar.NovoProdutoForm;
 import br.com.pooestoque.view.adicionar.RelatoriosProduto;
 import br.com.pooestoque.view.adicionar.VisualizarProdutoForm;
 import java.awt.Dimension;
+import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -391,15 +392,16 @@ public class ProdutoForm extends javax.swing.JInternalFrame {
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         if (tabela.getSelectedRow() != -1) {
             ProdutoCon produtoCon = new ProdutoCon();
-            Produto produto = produtoCon.getProduto((Integer) tabela.getValueAt(tabela.getSelectedRow(), 0));
+            //Produto produto = produtoCon.getProduto((Integer) tabela.getValueAt(tabela.getSelectedRow(), 0));
+            List<Produto> produtos = produtoCon.getProdutoPorID((Integer) tabela.getValueAt(tabela.getSelectedRow(), 0));
 
             NovoProdutoForm janela = new NovoProdutoForm("Altera");
             janela.setTitle("Alterar Produto");
             janela.setModal(true);
             janela.setLocationRelativeTo(null);
-            janela.setProdutoAlterar(produto);
+            janela.setProdutoAlterar(produtos.get(0));
             janela.setVisible(true);
-
+            
             if (!janela.isVisible()) {
                 btnPesquisarActionPerformed(evt);
             }

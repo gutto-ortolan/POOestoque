@@ -19,13 +19,8 @@ import br.com.pooestoque.model.SubGrupo;
 import br.com.pooestoque.model.TipoProduto;
 import br.com.pooestoque.model.UnidadeProduto;
 import java.awt.Toolkit;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -417,13 +412,13 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         txfCusto.setText(String.valueOf(produto.getVlPrecoCusto()));
         txfVenda.setText(String.valueOf(produto.getVlPrecoVenda()));
         txfQtd.setText(String.valueOf(produto.getQtd()));
-        cbxDivisao.setSelectedItem(produto.getDivisao());
         cbxFornecedor.setSelectedItem(produto.getFornecedor());
         cbxGrupo.setSelectedItem(produto.getDivisao().getSubGrupo().getGrupo());
         cbxMarca.setSelectedItem(produto.getMarca());
         cbxOrigem.setSelectedItem(produto.getOrigem());
         cbxSituacao.setSelectedItem(produto.getStProduto());
         cbxSubGrupo.setSelectedItem(produto.getDivisao().getSubGrupo());
+        cbxDivisao.setSelectedItem(produto.getDivisao());
         cbxTipo.setSelectedItem(produto.getTipoProduto());
         cbxUnidade.setSelectedItem(produto.getUnidade());
     }

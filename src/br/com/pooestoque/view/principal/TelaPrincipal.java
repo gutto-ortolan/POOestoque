@@ -452,11 +452,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         suporte.setModal(true);
         suporte.setLocationRelativeTo(null);
         suporte.setVisible(true);
-        
-        
-        
-        
-        
     }//GEN-LAST:event_jmSuporteActionPerformed
 
     /**
