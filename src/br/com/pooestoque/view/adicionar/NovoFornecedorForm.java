@@ -1,7 +1,9 @@
 package br.com.pooestoque.view.adicionar;
 
 import br.com.pooestoque.controller.FornecedorCon;
+import br.com.pooestoque.controller.GenericCon;
 import br.com.pooestoque.model.Fornecedor;
+import br.com.pooestoque.model.Pessoa;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
@@ -197,11 +199,17 @@ public class NovoFornecedorForm extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public void separaPorOrigemGravar(String origemBtn) {
+            Pessoa pessoa = new Pessoa();
+            pessoa.setNmPessoa(txfNome.getText().toUpperCase());
+            pessoa.setCpfCnpj(txfCnpj.getText());
+            GenericCon pessoaCon = new  GenericCon();
+            
+            pessoaCon.incluir(pessoa);
+        
             Fornecedor f = new Fornecedor();
-            f.setNmFornecedor(txfNome.getText().toUpperCase());
             f.setStFornecedor(cbxSituacao.getSelectedItem().toString().toUpperCase());
             f.setDiasVisita(Integer.parseInt(txfDiasVisita.getText()));
-            f.setCnpj(txfCnpj.getText());
+            f.setPessoa(pessoa);
             if(origemBtn.equals("Novo")){
                fornecedorCon.incluir(f); 
             }else if(origemBtn.equals("Altera")){
@@ -220,10 +228,10 @@ public class NovoFornecedorForm extends javax.swing.JDialog {
     
     public void setFornecedorAlterar(Fornecedor obj) {
         txfCodigo.setText(String.valueOf(obj.getIdFornecedor()));
-        txfNome.setText(obj.getNmFornecedor());
+        txfNome.setText(obj.getPessoa().getNmPessoa());
         cbxSituacao.setSelectedItem(obj.getStFornecedor());
         txfDiasVisita.setText(obj.getDiasVisita().toString());
-        txfCnpj.setText(obj.getCnpj());
+        txfCnpj.setText(obj.getPessoa().getCpfCnpj());
     }
     
     

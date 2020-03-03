@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -23,15 +25,14 @@ public class Fornecedor implements Serializable{
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQFORNECEDOR") 
     private Integer idFornecedor;
    
-    @Column(nullable = false)
-    private String nmFornecedor;
-    
-    private String cnpj;
-    
     private Integer diasVisita;
     
     @Column(nullable = false, columnDefinition = "char")
     private String stFornecedor;
+    
+    @ManyToOne
+    @JoinColumn(name="idPessoa", nullable = false)
+    private Pessoa pessoa;
 
     public Integer getIdFornecedor() {
         return idFornecedor;
@@ -39,22 +40,6 @@ public class Fornecedor implements Serializable{
 
     public void setIdFornecedor(Integer idFornecedor) {
         this.idFornecedor = idFornecedor;
-    }
-
-    public String getNmFornecedor() {
-        return nmFornecedor;
-    }
-
-    public void setNmFornecedor(String nmFornecedor) {
-        this.nmFornecedor = nmFornecedor;
-    }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
     }
 
     public Integer getDiasVisita() {
@@ -87,11 +72,13 @@ public class Fornecedor implements Serializable{
             this.stFornecedor = stFornecedor;
         }
     }
-    
-    @Override
-    public String toString() {
-        return getNmFornecedor();
+
+    public Pessoa getPessoa() {
+        return pessoa;
     }
-    
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
     
 }

@@ -384,7 +384,7 @@ public class DivisaoForm extends javax.swing.JInternalFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         if (tabela.getSelectedRow() != -1) {
-            Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
+           // Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
 
             if (JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
                 Divisao obj = divisaoCon.getDivisao(Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(), 0).toString()));

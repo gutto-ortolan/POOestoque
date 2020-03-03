@@ -26,7 +26,7 @@ public class VisualizarProdutoForm extends javax.swing.JDialog {
         txfCusto.setText(String.valueOf(obj.getVlPrecoCusto()));
         txfVenda.setText(String.valueOf(obj.getVlPrecoVenda()));
         txfDivisao.setText(obj.getDivisao().getDsDivisao());
-        txfFornecedor.setText(obj.getFornecedor().getNmFornecedor());
+        txfFornecedor.setText(obj.getFornecedor().getPessoa().getNmPessoa());
         txfMarca.setText(obj.getMarca().getDsMarca());
         txfOrigem.setText(obj.getOrigem().getDsOrigem());
         txfQtd.setText(String.valueOf(obj.getQtd()));

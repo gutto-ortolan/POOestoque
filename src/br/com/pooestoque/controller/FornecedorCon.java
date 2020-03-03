@@ -11,63 +11,10 @@ import org.hibernate.Session;
  *
  * @author augusto.ortolan
  */
-public class FornecedorCon {
+public class FornecedorCon extends GenericCon{
     private String mensagem;
 
     public FornecedorCon() {
-    }
-    
-    
-    public boolean incluir(Fornecedor obj){
-        Session sessao = HibernateUtil.getSession();
-        sessao.beginTransaction();
-        
-        try{
-            sessao.save(obj);
-            sessao.getTransaction().commit();
-            mensagem = "Incluído com sucesso!";
-            return true;
-        }catch (Exception e){
-            sessao.getTransaction().rollback();
-            mensagem = TrataException.trataException(e);
-            return false;
-        }finally {
-            sessao.close();
-        }
-    }
-    
-    public boolean alterar(Fornecedor obj){
-        Session sessao = HibernateUtil.getSession();
-        sessao.beginTransaction();
-        try{
-            sessao.update(obj);
-            sessao.getTransaction().commit();
-            mensagem = "Alterado com sucesso";
-            return true;
-        }catch (Exception e){
-            sessao.getTransaction().rollback();
-            mensagem = TrataException.trataException(e);
-            return false;
-        }finally{
-            sessao.close();
-        }
-    }
-
-    public boolean excluir(Fornecedor obj){
-        Session sessao = HibernateUtil.getSession();
-        sessao.beginTransaction();
-        try{
-            sessao.delete(obj);
-            sessao.getTransaction().commit();
-            mensagem = "Excluído com sucesso";
-            return true;
-        }catch (Exception e){
-            sessao.getTransaction().rollback();
-            mensagem = TrataException.trataException(e);
-            return false;
-        }finally{
-            sessao.close();
-        }
     }
     
     public Fornecedor getFornecedor(Integer idFornecedor){
@@ -106,7 +53,11 @@ public class FornecedorCon {
         sessao.beginTransaction();
         
         try{
-            return sessao.createQuery("from Fornecedor where nmFornecedor like '%"+par+"%' order by idFornecedor").list();
+            String sql = "select f.idFornecedor, p.nmPessoa, p.cpfCnpj, f.diasVisita, f.stFornecedor from Fornecedor f left join pessoa p on f.idPessoa = p.idPessoa where p.nmPessoa like '%"+par+"%' order by idFornecedor";
+            
+            List lista = sessao.createSQLQuery(sql).list();
+            
+            return lista;
         }catch (Exception e){
             mensagem = TrataException.trataException(e);
             return null;

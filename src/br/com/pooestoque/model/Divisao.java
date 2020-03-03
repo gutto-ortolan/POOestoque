@@ -25,7 +25,7 @@ public class Divisao implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQDIVISAO")
     private Integer idDivisao;
     
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String dsDivisao;
     
     @Column(nullable = false, columnDefinition = "char")

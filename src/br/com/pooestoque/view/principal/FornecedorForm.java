@@ -60,8 +60,8 @@ public class FornecedorForm extends javax.swing.JInternalFrame {
         for (Fornecedor fornecedor : fornecedorCon.getLista()) {
             tabelaModelo.addRow(new Object[]{
                 fornecedor.getIdFornecedor(),
-                fornecedor.getNmFornecedor(),
-                fornecedor.getCnpj(),
+                fornecedor.getPessoa().getNmPessoa(),
+                fornecedor.getPessoa().getCpfCnpj(),
                 fornecedor.getDiasVisita(),
                 fornecedor.getStFornecedor()
             });
@@ -72,13 +72,13 @@ public class FornecedorForm extends javax.swing.JInternalFrame {
         tabelaModelo = (DefaultTableModel) tabela.getModel();
         tabelaModelo.setNumRows(0);
 
-        for (Fornecedor fornecedor : fornecedorCon.getFornecedorPorNome(txfPesquisar.getText().toUpperCase())) {
+        for (Object obj : fornecedorCon.getFornecedorPorNome(txfPesquisar.getText().toUpperCase())) {
             tabelaModelo.addRow(new Object[]{
-                fornecedor.getIdFornecedor(),
-                fornecedor.getNmFornecedor(),
-                fornecedor.getCnpj(),
-                fornecedor.getDiasVisita(),
-                fornecedor.getStFornecedor()
+                ((Object[]) obj)[0] == null ? null : Integer.parseInt(((Object[]) obj)[0].toString()),
+                ((Object[]) obj)[1] == null ? null : ((Object[]) obj)[1].toString(),
+                ((Object[]) obj)[2] == null ? null : ((Object[]) obj)[2].toString(),
+                ((Object[]) obj)[3] == null ? null : Integer.parseInt(((Object[]) obj)[3].toString()),
+                ((Object[]) obj)[4] == null ? null :  ((Object[]) obj)[4].toString()
             });
         }
     }
@@ -90,8 +90,8 @@ public class FornecedorForm extends javax.swing.JInternalFrame {
         for (Fornecedor fornecedor : fornecedorCon.getFornecedorPorID(Integer.parseInt(txfPesquisar.getText()))) {
             tabelaModelo.addRow(new Object[]{
                 fornecedor.getIdFornecedor(),
-                fornecedor.getNmFornecedor(),
-                fornecedor.getCnpj(),
+                fornecedor.getPessoa().getNmPessoa(),
+                fornecedor.getPessoa().getCpfCnpj(),
                 fornecedor.getDiasVisita(),
                 fornecedor.getStFornecedor()
             });
@@ -105,8 +105,8 @@ public class FornecedorForm extends javax.swing.JInternalFrame {
         for (Fornecedor fornecedor : fornecedorCon.getFornecedorPorSituacao(txfPesquisar.getText())) {
             tabelaModelo.addRow(new Object[]{
                 fornecedor.getIdFornecedor(),
-                fornecedor.getNmFornecedor(),
-                fornecedor.getCnpj(),
+                fornecedor.getPessoa().getNmPessoa(),
+                fornecedor.getPessoa().getCpfCnpj(),
                 fornecedor.getDiasVisita(),
                 fornecedor.getStFornecedor()
             });
@@ -357,8 +357,8 @@ public class FornecedorForm extends javax.swing.JInternalFrame {
             // adicionar produto na tabela;
             ((DefaultTableModel) tabela.getModel()).addRow(new Object[]{
                 fornecedor.getIdFornecedor(),
-                fornecedor.getNmFornecedor(),
-                fornecedor.getCnpj(),
+                fornecedor.getPessoa().getNmPessoa(),
+                fornecedor.getPessoa().getCpfCnpj(),
                 fornecedor.getDiasVisita(),
                 fornecedor.getStFornecedor()
             });
