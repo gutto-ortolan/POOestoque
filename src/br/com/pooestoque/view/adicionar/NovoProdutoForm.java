@@ -19,6 +19,7 @@ import br.com.pooestoque.model.SubGrupo;
 import br.com.pooestoque.model.TipoProduto;
 import br.com.pooestoque.model.UnidadeProduto;
 import java.awt.Toolkit;
+import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -42,8 +43,20 @@ public class NovoProdutoForm extends javax.swing.JDialog {
     
     public NovoProdutoForm(String origem) {
         initComponents();
+        populaComboGrupo();
         origemBnt = origem;
         setIcon();
+        
+        
+    }
+    
+    private void populaComboGrupo(){
+        List<Grupo> list = new ArrayList();
+        list.add(null);
+        for (Grupo grupo : grupoCon.getLista()) {
+            list.add(grupo);
+        }
+        cbxGrupo.setModel(new DefaultComboBoxModel(list.toArray()));
     }
     
     private void setIcon() {
@@ -331,7 +344,6 @@ public class NovoProdutoForm extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         getContentPane().add(cbxFornecedor, gridBagConstraints);
 
-        cbxGrupo.setModel(new DefaultComboBoxModel(grupoCon.getLista().toArray()));
         cbxGrupo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbxGrupoItemStateChanged(evt);
@@ -429,20 +441,30 @@ public class NovoProdutoForm extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void cbxGrupoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxGrupoItemStateChanged
-        List<SubGrupo> list = new ArrayList();
-        
-        list = subGrupoCon.populaComSub(((Grupo)cbxGrupo.getSelectedItem()).getIdGrupo());
-        
-        cbxSubGrupo.setModel(new DefaultComboBoxModel(list.toArray()));
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            List<SubGrupo> list = new ArrayList();
+
+            list.add(null);
+            for (SubGrupo subGrupo : subGrupoCon.populaComSub(((Grupo) cbxGrupo.getSelectedItem()).getIdGrupo())) {
+                list.add(subGrupo);
+            }
+
+            cbxSubGrupo.setModel(new DefaultComboBoxModel(list.toArray()));
+        }
         
     }//GEN-LAST:event_cbxGrupoItemStateChanged
 
     private void cbxSubGrupoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxSubGrupoItemStateChanged
-        List<Divisao> list = new ArrayList();
-        
-        list = divisaoCon.populaComDiv(((SubGrupo)cbxSubGrupo.getSelectedItem()).getIdSubGrupo());
-        
-        cbxDivisao.setModel(new DefaultComboBoxModel(list.toArray()));
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            List<Divisao> list = new ArrayList();
+            
+            list.add(null);
+            for (Divisao divisao : divisaoCon.populaComDiv(((SubGrupo) cbxSubGrupo.getSelectedItem()).getIdSubGrupo())) {
+                list.add(divisao);
+            }
+
+            cbxDivisao.setModel(new DefaultComboBoxModel(list.toArray()));
+        }
     }//GEN-LAST:event_cbxSubGrupoItemStateChanged
 
     public void separaPorOrigemGravar(String origem){

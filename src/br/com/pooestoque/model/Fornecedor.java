@@ -80,5 +80,12 @@ public class Fornecedor implements Serializable{
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
     }
+
+    @Override
+    public String toString() {
+        return pessoa.getNmPessoa();
+    }
+    
+    
     
 }
